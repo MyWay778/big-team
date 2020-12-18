@@ -1,0 +1,24 @@
+.textBlock {
+  margin-left: 185px;
+}
+
+.header__card {
+  color: var(--color-additional);
+}
+
+.infoCards__main {
+  margin-top: 15px;
+}
+
+.itemCard:nth-child(2) {
+  margin-top: 8px;
+}
+
+.itemCard_halfOpacity {
+  opacity: 0.5;
+}
+
+.user__ava {
+  border: 2px solid var(--color-highlight);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}

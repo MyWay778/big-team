@@ -1,0 +1,12 @@
+.ava__card {
+  border-radius: 15px;
+}
+
+.ava_float {
+  float: left;
+}
+
+.ava {
+  border: 2px solid var(--color-highlight);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}

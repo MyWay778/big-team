@@ -1,0 +1,6 @@
+.posts {
+  list-style-type: none;
+}
+.posts li:nth-child(n + 2) {
+  margin-top: 20px;
+}

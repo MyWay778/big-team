@@ -1,0 +1,17 @@
+.TextArea {
+  outline: none;
+  font: bold 16px var(--text-roboto);
+  color: var(--text-color);
+  width: 100%;
+  resize: none;
+  padding: 15px 25px;
+  border-color: var(--color-background-card);
+  border-radius: 15px;
+  background-color: var(--color-backForMessages);
+}
+
+.TextArea::placeholder {
+  font: bold 16px var(--text-openSans);
+  color: var(--text-color);
+  opacity: 0.4;
+}

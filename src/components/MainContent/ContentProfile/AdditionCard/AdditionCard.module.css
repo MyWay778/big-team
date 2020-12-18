@@ -1,0 +1,8 @@
+.additionCard {
+  grid-area: adc;
+}
+
+.card {
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+}

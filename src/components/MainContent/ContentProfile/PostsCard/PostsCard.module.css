@@ -1,0 +1,9 @@
+.postsCard {
+  grid-area: pcard;
+  padding: 30px 45px 45px;
+}
+
+.card {
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+}

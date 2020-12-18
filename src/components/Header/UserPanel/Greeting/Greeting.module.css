@@ -1,0 +1,13 @@
+.greeting {
+  font-family: var(--text-roboto);
+  font-weight: bold;
+  color: var(--color-highlight);
+  display: inline-block;
+  vertical-align: 25px;
+  margin-right: 10px;
+}
+
+.greeting__username {
+  font-size: 18px;
+  color: var(--text-color);
+}

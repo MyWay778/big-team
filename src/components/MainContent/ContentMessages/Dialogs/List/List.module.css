@@ -1,0 +1,6 @@
+.dialogs {
+  grid-area: dialogs;
+  padding: 45px 45px 35px;
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+}

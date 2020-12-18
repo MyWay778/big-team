@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #202426;
+}
+
+a {
+  text-decoration: none;
+  color: #F2F2F2;
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+}
+
+.page-wrapper {
+  max-width: 1365px;
+  margin: 10px auto 0;
+  font: 400 16px "Open Sans", sans-serif;
+  letter-spacing: 0.03em;
+  color: #F2F2F2;
+}
+
+main {
+  margin-top: 80px;
+}

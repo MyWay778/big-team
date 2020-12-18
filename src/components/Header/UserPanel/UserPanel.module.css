@@ -1,0 +1,30 @@
+.userPanel {
+  flex: 0.1 0 200px;
+  text-align: right;
+  align-self: center;
+}
+
+.userPanel__greeting {
+  font-family: var(--text-roboto);
+  font-weight: bold;
+  color: var(--color-highlight);
+  display: inline-block;
+  vertical-align: 25px;
+  margin-right: 10px;
+}
+
+.userPanel__username {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.user__ava {
+  border: 2px solid var(--color-highlight);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.user__ava_circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}

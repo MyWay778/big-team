@@ -1,0 +1,21 @@
+.messages {
+  grid-area: messages;
+  padding: 45px 45px 35px;
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+}
+
+.card {
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+}
+
+.secondaryInfo {
+  clear: both;
+  margin-top: 40px;
+}
+
+.itemCard__answer {
+  white-space: nowrap;
+  padding: 10px 0 10px 20px;
+}

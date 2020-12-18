@@ -1,0 +1,8 @@
+.tableRow__answer {
+  white-space: nowrap;
+  padding: 10px 0 10px 20px;
+}
+
+.tableRow_halfOpacity {
+  opacity: 0.5;
+}

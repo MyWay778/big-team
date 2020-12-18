@@ -1,0 +1,7 @@
+.headerNav {
+  align-self: center;
+}
+
+.headerNav a:first-child {
+  margin-right: 46px;
+}

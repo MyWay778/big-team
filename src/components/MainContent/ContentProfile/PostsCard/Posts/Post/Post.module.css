@@ -1,0 +1,8 @@
+.postText {
+  font: bold 18px var(--text-openSans);
+  background-color: var(--color-backForMessages);
+  padding: 15px 30px;
+  margin-left: 8px;
+  border-radius: 15px;
+  vertical-align: 22px;
+}
