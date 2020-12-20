@@ -1,9 +1,9 @@
 .contentMessages {
   display: grid;
-  grid-template-areas: 'dialogs messages';
-  grid-template-rows: 1fr;
+  grid-template-areas: 'dialogs messages' 'writeM writeM';
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 0.5fr 1fr;
-  grid-gap: 2%;
+  grid-gap: 3%;
   padding-top: 100px;
   margin: 0 40px;
 }

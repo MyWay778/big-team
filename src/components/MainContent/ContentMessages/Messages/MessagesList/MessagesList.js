@@ -5,9 +5,9 @@ import classes from './MessagesList.module.css'
 
 const MessagesList = () => {
   return (
-    <ul>
-      <Message direction="in" text="Привет, как дела?" />
-      <Message direction="out" text="Отлично как у тебя?" />
+    <ul className={classes.messagesList}>
+      <Message text="Привет, как дела?" />
+      <Message out={true} text="Отлично как у тебя?" />
     </ul>
   )
 }

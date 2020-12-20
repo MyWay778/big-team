@@ -1,6 +1,9 @@
-.messages {
-  grid-area: messages;
-  padding: 45px 45px 35px;
-  background-color: var(--color-background-card);
-  border-radius: 15px;
+
+.message span{
+    padding: 7px 12px;
+    background-color: var(--color-backForMessages);
+    border-radius: 15px;
+}
+.out {
+    text-align: right;
 }

@@ -1,6 +1,8 @@
-.dialogs {
-  grid-area: dialogs;
-  padding: 45px 45px 35px;
-  background-color: var(--color-background-card);
-  border-radius: 15px;
+.list {
+  font-size: 18px;
+  margin-top: 30px;
+  list-style-type: none;
+}
+.list li:nth-child(n+2) {
+  margin-top: 20px;
 }

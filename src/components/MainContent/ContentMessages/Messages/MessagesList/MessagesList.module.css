@@ -1,6 +1,7 @@
-.messages {
-  grid-area: messages;
-  padding: 45px 45px 35px;
-  background-color: var(--color-background-card);
-  border-radius: 15px;
+.messagesList {
+  list-style-type: none;
+  margin-top: 30px;
+}
+.messagesList li:nth-child(n+2) {
+  margin-top: 25px;
 }

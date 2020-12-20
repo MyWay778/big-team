@@ -1,6 +1,8 @@
-.dialogs {
-  grid-area: dialogs;
-  padding: 45px 45px 35px;
-  background-color: var(--color-background-card);
+.item span {
   border-radius: 15px;
+  padding: 7px 12px;
+  vertical-align: 8px;
+}
+.item a:hover > span{
+  background-color: var(--color-backForMessages);
 }

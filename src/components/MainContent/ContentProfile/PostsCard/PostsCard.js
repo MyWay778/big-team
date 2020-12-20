@@ -8,7 +8,7 @@ const PostsCard = () => {
   return (
     <section className={`${classes.postsCard} ${classes.card}`}>
       <HeaderFour text="Мои новости" />
-      <Form />
+      <Form submitText="Поделиться"/>
       <Posts />
     </section>
   )
