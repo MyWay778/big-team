@@ -5,12 +5,12 @@ import UserCard from './UserCard/UserCard'
 import AdditionCard from './AdditionCard/AdditionCard'
 import PostsCard from './PostsCard/PostsCard'
 
-const ContentProfile = () => {
+const ContentProfile = (props) => {
   return (
     <div className={classes.contentProfile}>
       <UserCard />
       <AdditionCard />
-      <PostsCard />
+      <PostsCard posts={props.posts}/>
     </div>
   )
 }

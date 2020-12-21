@@ -12,7 +12,7 @@ class App extends React.Component {
                 <Header/>
                 <main>
                     <NavAside/>
-                    <Content/>
+                    <Content dialogsData = {this.props.dialogsData} posts={this.props.posts}/>
                 </main>
                 {/* <Footer /> */}
             </div>

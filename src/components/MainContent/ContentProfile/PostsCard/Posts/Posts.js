@@ -3,11 +3,13 @@ import Post from './Post/Post'
 import classes from './Posts.module.css'
 import userAvaImg from '../../../static/user-ava.jpg'
 
-const Posts = () => {
+
+const Posts = (props) => {
   return (
     <ul className={classes.posts}>
-      <Post img={userAvaImg} message="Всем привет!) Как у вас дела???" />
-      <Post img={userAvaImg} message="У меня все ОК!" />
+        {
+            props.posts.map(message => <Post key={message.id} img={userAvaImg} message={message.message} />)
+        }
     </ul>
   )
 }

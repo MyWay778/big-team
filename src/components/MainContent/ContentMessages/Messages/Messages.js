@@ -4,11 +4,11 @@ import HeaderFour from '../../ContentProfile/UserCard/MainInfo/TextBlock/HeaderF
 import classes from './Messages.module.css'
 import MessagesList from './MessagesList/MessagesList'
 
-const Messages = () => {
+const Messages = (props) => {
   return (
     <div className={classes.messages}>
       <HeaderFour text="Сообщения" />
-      <MessagesList />
+      <MessagesList messagesData={props.messagesData}/>
     </div>
   )
 }

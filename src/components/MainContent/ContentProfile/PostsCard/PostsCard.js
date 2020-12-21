@@ -4,12 +4,12 @@ import classes from './PostsCard.module.css'
 import HeaderFour from '../UserCard/MainInfo/TextBlock/HeaderFour/HeaderFour'
 import Posts from './Posts/Posts'
 
-const PostsCard = () => {
+const PostsCard = (props) => {
   return (
     <section className={`${classes.postsCard} ${classes.card}`}>
       <HeaderFour text="Мои новости" />
       <Form submitText="Поделиться"/>
-      <Posts />
+      <Posts posts={props.posts}/>
     </section>
   )
 }

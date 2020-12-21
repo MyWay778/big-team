@@ -3,11 +3,12 @@ import Message from './Message/Message'
 
 import classes from './MessagesList.module.css'
 
-const MessagesList = () => {
+const MessagesList = (props) => {
   return (
     <ul className={classes.messagesList}>
-      <Message text="Привет, как дела?" />
-      <Message out={true} text="Отлично как у тебя?" />
+        {
+            props.messagesData.map(message => <Message key={message.id} out={message.out} text={message.text} />)
+        }
     </ul>
   )
 }

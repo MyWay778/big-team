@@ -4,11 +4,11 @@ import HeaderFour from '../../ContentProfile/UserCard/MainInfo/TextBlock/HeaderF
 import classes from './Dialogs.module.css'
 import List from './List/List'
 
-const Dialogs = () => {
+const Dialogs = (props) => {
   return (
     <div className={classes.dialogs}>
       <HeaderFour text="Диалоги" />
-      <List />
+      <List dialogsData={props.dialogsData}/>
     </div>
   )
 }

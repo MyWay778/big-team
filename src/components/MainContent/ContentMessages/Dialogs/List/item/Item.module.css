@@ -3,6 +3,9 @@
   padding: 7px 12px;
   vertical-align: 8px;
 }
+.item a {
+  cursor: default;
+}
 .item a:hover > span{
   background-color: var(--color-backForMessages);
 }

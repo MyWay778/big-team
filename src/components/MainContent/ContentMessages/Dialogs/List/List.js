@@ -4,11 +4,12 @@ import Item from './item/Item'
 import contactImg from '../../static/user.svg'
 import classes from './List.module.css'
 
-const List = () => {
+const List = (props) => {
   return (
     <ul className={classes.list}>
-      <Item img={contactImg} name="Петр" />
-      <Item img={contactImg} name="Вася" />
+        {
+            props.dialogsData.map(data => <Item key={data.id} img={contactImg} name={data.name} id={data.id}/>)
+        }
     </ul>
   )
 }
