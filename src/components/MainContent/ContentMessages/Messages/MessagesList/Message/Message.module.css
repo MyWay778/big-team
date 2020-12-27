@@ -2,8 +2,13 @@
 .message span{
     padding: 7px 12px;
     background-color: var(--color-backForMessages);
+    margin-left: 10px;
     border-radius: 15px;
+    vertical-align: 15px
 }
 .out {
     text-align: right;
+}
+.message img {
+    border-radius: 50%;
 }

@@ -10,7 +10,7 @@ const ContentProfile = (props) => {
     <div className={classes.contentProfile}>
       <UserCard />
       <AdditionCard />
-      <PostsCard posts={props.posts}/>
+      <PostsCard postsData={props.postsData} dispatch={props.dispatch}/>
     </div>
   )
 }

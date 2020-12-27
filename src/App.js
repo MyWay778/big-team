@@ -2,21 +2,20 @@ import React from 'react'
 import Header from './components/Header/Header'
 import Content from './components/MainContent/Content'
 import NavAside from './components/NavAside/NavAside'
-import {BrowserRouter, Route} from "react-router-dom";
 
 class App extends React.Component {
   render() {
+      const state = this.props.getState()
+      const dispatch = this.props.dispatch.bind(this.props)
     return (
-        <BrowserRouter>
             <div className="page-wrapper">
                 <Header/>
                 <main>
-                    <NavAside/>
-                    <Content dialogsData = {this.props.dialogsData} posts={this.props.posts}/>
+                    <NavAside state={state.friendsData}/>
+                    <Content state={{dialogsData:state.dialogsData, postsData:state.postsData }} dispatch={dispatch} />
                 </main>
                 {/* <Footer /> */}
             </div>
-        </BrowserRouter>
     )
   }
 }
