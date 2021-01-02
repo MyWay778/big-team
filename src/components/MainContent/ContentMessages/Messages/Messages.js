@@ -7,7 +7,7 @@ import MessagesList from './MessagesList/MessagesList'
 const Messages = (props) => {
   return (
     <div className={classes.messages}>
-      <HeaderFour text="Сообщения" />
+      <HeaderFour text={props.textHeader} />
       <MessagesList messagesData={props.messagesData}/>
     </div>
   )

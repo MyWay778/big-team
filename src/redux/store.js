@@ -44,5 +44,6 @@ const store = {
     }
 }
 
+
 // store.actions.postActions.handlePostChange = store.actions.postActions.handlePostChange.bind(store)
 export default store

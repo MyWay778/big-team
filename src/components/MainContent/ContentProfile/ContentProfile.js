@@ -3,14 +3,14 @@ import React from 'react'
 import classes from './ContentProfile.module.css'
 import UserCard from './UserCard/UserCard'
 import AdditionCard from './AdditionCard/AdditionCard'
-import PostsCard from './PostsCard/PostsCard'
+import PostsCardContainer from "./PostsCard/PostsCardContainer";
 
-const ContentProfile = (props) => {
+const ContentProfile = () => {
   return (
     <div className={classes.contentProfile}>
       <UserCard />
       <AdditionCard />
-      <PostsCard postsData={props.postsData} dispatch={props.dispatch}/>
+      <PostsCardContainer />
     </div>
   )
 }

@@ -2,13 +2,13 @@ import React from 'react'
 
 import s from './NavAside.module.css'
 import Nav from './Nav/Nav'
-import FriendsList from "./FriendsList/FriendsList";
+import FriendsListContainer from "./FriendsList/FriendsListContainer";
 
 const NavAside = (props) => {
   return (
     <nav className={s.navAside}>
       <Nav />
-      <FriendsList state={props.state}/>
+      <FriendsListContainer />
     </nav>
   )
 }

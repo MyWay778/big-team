@@ -7,7 +7,7 @@ import List from './List/List'
 const Dialogs = (props) => {
   return (
     <div className={classes.dialogs}>
-      <HeaderFour text="Диалоги" />
+      <HeaderFour textHeader={props.textHeader} />
       <List dialogsData={props.dialogsData}/>
     </div>
   )

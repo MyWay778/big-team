@@ -9,7 +9,7 @@ const MessagesList = (props) => {
   return (
     <ul className={classes.messagesList}>
         {
-            props.messagesData.messages.map(message => <Message key={message.id} out={message.out} text={message.text}
+            props.messagesData.map(message => <Message key={message.id} out={message.out} text={message.text}
                                                        img={message.out ? myMessageImg : defaultImg}/>)
         }
     </ul>

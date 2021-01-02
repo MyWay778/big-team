@@ -1,0 +1,5 @@
+.usersCard {
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+  padding: 45px;
+}

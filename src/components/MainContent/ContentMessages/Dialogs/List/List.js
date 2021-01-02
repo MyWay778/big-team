@@ -8,7 +8,7 @@ const List = (props) => {
   return (
     <ul className={classes.list}>
         {
-            props.dialogsData.dialogs.map(data => <Item key={data.id} img={contactImg} name={data.name} id={data.id}/>)
+            props.dialogsData.map(data => <Item key={data.id} img={contactImg} name={data.name} id={data.id}/>)
         }
     </ul>
   )

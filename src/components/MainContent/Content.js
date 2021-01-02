@@ -1,15 +1,18 @@
 import React from 'react'
 
 import classes from './Content.module.css'
-import ContentMessages from './ContentMessages/ContentMessages'
+
 import ContentProfile from './ContentProfile/ContentProfile'
 import {Route} from 'react-router-dom'
+import ContentMessages from "./ContentMessages/ContentMessages";
+import UsersContent from "./UsersContent/UsersContent";
 
-const Content = (props) => {
+const Content = () => {
     return (
         <div className={classes.content}>
-            <Route path="/profile" render={() => <ContentProfile postsData={props.state.postsData} dispatch={props.dispatch} />}/>
-            <Route path="/messages" render={() => <ContentMessages dialogsData={props.state.dialogsData} dispatch={props.dispatch}/>}/>
+            <Route path="/profile" render={() => <ContentProfile />} />
+            <Route path="/messages" render={() => <ContentMessages />} />
+            <Route path="/users" render={() => <UsersContent />} />
         </div>
     )
 }

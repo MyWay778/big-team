@@ -1,19 +1,27 @@
 const   WRITING_POST = "WRITING-POST"
 const ADD_POST = "ADD-POST"
 
-const postsReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: 1, message: 'Всем привет!) Как у вас дела???'},
+        {id: 2, message: 'У меня все ОК!'}
+    ],
+    newPostValue: ''
+}
+
+const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case WRITING_POST :
-            state.newPostValue = action.newText
-            return state
-        case ADD_POST :
-            const newPost = {
-                id: 3,
-                message: state.newPostValue
+            return {
+                ...state,
+                newPostValue: action.newText
             }
-            state.posts.push(newPost)
-            state.newPostValue = ""
-            return state
+        case ADD_POST :
+            return {
+                ...state,
+                posts: [...state.posts, {id:3, message: state.newPostValue}],
+                newPostValue: ""
+            }
         default :
             return state
     }

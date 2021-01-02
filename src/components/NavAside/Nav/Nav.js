@@ -14,7 +14,7 @@ const Nav = () => {
     <ul className={s.nav}>
       <Item img={profileIconImg} title="Профиль" href="/profile"/>
       <Item img={messagesIconImg} title="Сообщения" href="/messages"/>
-      <Item img={friendIconImg} title="Друзья" href="#"/>
+      <Item img={friendIconImg} title="Поиск друзей" href="/users"/>
       <Item img={musicIconImg} title="Музыка" href="#"/>
       <Item img={settingsIconImg} title="Настройки" href="#"/>
     </ul>

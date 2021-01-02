@@ -1,18 +1,42 @@
 const WRITING_MESSAGE = "WRITING-MESSAGE"
 const SEND_MESSAGE = "SEND-MESSAGE"
 
-const dialogsReducer = (state, action) => {
+let initialState = {
+    dialogs: [
+        {
+            id: 1, name: "Петр", messages: [
+                {id: 1, out: false, text: 'Привет, как дела?'}, {id: 2, out: true, text: 'Отлично как у тебя?'}]
+        },
+        {
+            id: 2, name: "Вася", messages: [
+                {id: 1, out: false, text: 'Привет, как дела?'}, {id: 2, out: true, text: 'Отлично как у тебя?'}]
+        }
+    ],
+    newMessage: ""
+}
+
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case WRITING_MESSAGE :
-            state.newMessage = action.newText
-            return state
-        case SEND_MESSAGE :
+        case WRITING_MESSAGE : {
+            const stateCopy  = {
+                ...state,
+                newMessage: action.newText
+            }
+            return stateCopy
+        }
+        case SEND_MESSAGE : {
             const newMessage = {
                 id: 3, out: true, text: state.newMessage
             }
-            state.dialogs[0].messages.push(newMessage)   // What dialogs?!!!
-            state.newMessage = ''
-            return state
+            const stateCopy = {
+                ...state,
+                dialogs: [...state.dialogs]
+            }
+            stateCopy.dialogs[0].messages = [...state.dialogs[0].messages]
+            stateCopy.dialogs[0].messages.push(newMessage)   // What dialogs?!!!
+            stateCopy.newMessage = ''
+            return stateCopy
+        }
         default :
             return state
     }
