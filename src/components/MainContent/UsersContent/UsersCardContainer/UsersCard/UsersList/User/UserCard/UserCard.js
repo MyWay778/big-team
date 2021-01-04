@@ -8,22 +8,18 @@ const UserCard = (props) => {
         <div className={classes.userCard}>
             <section className={`${classes.section} ${classes.section_spaceBetween}`}>
                 <span className={classes.name}>
-                    Ivan S.
-                    {/*{props.fullName}*/}
+                    {props.name}
                 </span>
                 <span className={classes.status}>
-                    Learning...
-                    {/*{props.status}*/}
+                    {props.status}
                 </span>
             </section>
             <section className={`${classes.section} ${classes.section_alignCenter}`}>
                 <span className={classes.country}>
-                    Russia
-                    {/*{props.country}*/}
+                    {props.country}
                 </span>
                 <span className={classes.city}>
-                    Moscow
-                    {/*{props.city}*/}
+                    {props.city}
                 </span>
             </section>
         </div>

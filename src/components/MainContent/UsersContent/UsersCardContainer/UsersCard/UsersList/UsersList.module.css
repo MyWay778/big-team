@@ -1,0 +1,6 @@
+.usersList {
+  margin-top: 40px;
+}
+.usersList li:nth-child(n+2) {
+  margin-top: 30px;
+}

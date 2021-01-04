@@ -7,12 +7,11 @@ import User from "./User/User";
 const UsersList = (props) => {
     return (
         <ul className={classes.usersList}>
-            <User />
-            {/*{*/}
-            {/*    props.users.map( user => {*/}
-            {/*        return <User />*/}
-            {/*    })*/}
-            {/*}*/}
+            {
+                props.users.map( user => {
+                    return <User key={user.id} {...user} {...props.handlers} />
+                })
+            }
         </ul>
     )
 }

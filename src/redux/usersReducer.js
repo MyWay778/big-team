@@ -1,13 +1,17 @@
-const   FOLLOW = "FOLLOW",
+const
+FOLLOW = "FOLLOW",
 UNFOLLOW = "UNFOLLOW",
-SHOW_MORE = "SHOW-MORE"
+SHOW_MORE = "SHOW_MORE",
+SET_CURRENT_PAGE= "SET_CURRENT_PAGE",
+SET_PAGE_COUNT= "SET_PAGE_COUNT",
+SET_IS_LOADING = "SET_IS_LOADING"
 
 let initialState = {
-    users: [
-        {id: 1, followed: true, userPhoto: 'default', fullName: 'Ivan S.', status:'Learning React...', country: 'Russia', city: 'Moscow'},
-        {id: 2, followed: false, userPhoto: 'default', fullName: 'Mick J.', status:'Happy father!', country: 'Russia', city: 'Chita'},
-        {id: 3, followed: false, userPhoto: 'default', fullName: 'Petr Z.', status:'Trololo!', country: 'Russia', city: 'Xz'},
-    ]
+    users: [],
+    itemCount: 5,
+    pageCount: 3,
+    currentPage: 1,
+    isLoading: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -31,7 +35,22 @@ const usersReducer = (state = initialState, action) => {
         case SHOW_MORE :
             return {
                 ...state,
-                users: [...state.users, ...action.newUsers]
+                users: action.newUsers
+            }
+        case SET_CURRENT_PAGE :
+            return {
+                ...state,
+                currentPage: action.newCurrentPage
+            }
+        case SET_PAGE_COUNT :
+            return {
+                ...state,
+                pageCount: action.newPageCount
+            }
+        case SET_IS_LOADING :
+            return {
+                ...state,
+                isLoading: action.isLoading
             }
         default :
             return state
@@ -41,5 +60,8 @@ const usersReducer = (state = initialState, action) => {
 export const followAC= (userId) => ({type: FOLLOW, userId})
 export const unfollowAC= (userId) => ({type: UNFOLLOW, userId})
 export const showMoreAC = (newUsers) => ({type: SHOW_MORE, newUsers})
+export const setCurrentPageAC = (newCurrentPage) => ({type: SET_CURRENT_PAGE, newCurrentPage})
+export const setPageCountAC = (newPageCount) => ({type: SET_PAGE_COUNT, newPageCount})
+export const setIsLoadingAC = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 
 export default usersReducer

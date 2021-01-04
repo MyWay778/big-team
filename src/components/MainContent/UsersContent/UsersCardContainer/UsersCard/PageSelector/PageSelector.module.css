@@ -1,0 +1,16 @@
+.pageSelector {
+  margin: 35px 0 0 30%;
+  list-style-type: none;
+  display: flex;
+}
+.pageSelector > li {
+  cursor: pointer;
+  color: var(--text-color);
+}
+li.active {
+  font-weight: bold;
+  color: var(--color-additional)
+}
+.pageSelector > li:nth-child(n+2) {
+  margin-left: 20px;
+}

@@ -1,0 +1,11 @@
+.usersCard {
+  position:relative;
+  background-color: var(--color-background-card);
+  border-radius: 15px;
+  padding: 45px;
+}
+.usersCard  div[class*="preloader"]  {
+  position: absolute;
+  left: 230px;
+  bottom: 45px;
+}

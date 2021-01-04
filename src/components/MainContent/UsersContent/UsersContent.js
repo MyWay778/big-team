@@ -1,13 +1,13 @@
 import React from 'react'
 
 import classes from './UsersContent.module.css'
-import UsersCard from "./UsersCard/UsersCard";
+import UsersCardContainer from "./UsersCardContainer/UsersCardContainer";
 
 
 const UsersContent = () => {
   return (
     <div className={classes.usersContent}>
-        <UsersCard />
+        <UsersCardContainer />
     </div>
   )
 }
