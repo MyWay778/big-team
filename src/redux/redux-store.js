@@ -1,16 +1,18 @@
 import {combineReducers, createStore} from "redux";
-import postsReducer from "./postsReducer";
+import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import friendsReducer from "./friendsReducer";
 import usersReducer from "./usersReducer";
+import authReducer from "./authReducer";
 
 let reducers = combineReducers({
-    postsReducer,
+    profilePage: profileReducer,
     dialogsReducer,
     friendsReducer,
-    usersReducer
+    usersReducer,
+    authReducer
 });
 
 let store = createStore(reducers)
-
+window.store = store
 export default store

@@ -6,6 +6,7 @@ SET_CURRENT_PAGE= "SET_CURRENT_PAGE",
 SET_PAGE_COUNT= "SET_PAGE_COUNT",
 SET_IS_LOADING = "SET_IS_LOADING"
 
+
 let initialState = {
     users: [],
     itemCount: 5,
@@ -20,7 +21,9 @@ const usersReducer = (state = initialState, action) => {
         return {
             ...state,
             users: state.users.map( u => {
-                if (action.userId === u.id) u.followed = true
+                if (action.userId === u.id){
+                    u.followed = true
+                }
                 return u
             })
         }
@@ -57,11 +60,11 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC= (userId) => ({type: FOLLOW, userId})
-export const unfollowAC= (userId) => ({type: UNFOLLOW, userId})
-export const showMoreAC = (newUsers) => ({type: SHOW_MORE, newUsers})
-export const setCurrentPageAC = (newCurrentPage) => ({type: SET_CURRENT_PAGE, newCurrentPage})
-export const setPageCountAC = (newPageCount) => ({type: SET_PAGE_COUNT, newPageCount})
-export const setIsLoadingAC = (isLoading) => ({type: SET_IS_LOADING, isLoading})
+export const follow= (userId) => ({type: FOLLOW, userId})
+export const unfollow= (userId) => ({type: UNFOLLOW, userId})
+export const showMore = (newUsers) => ({type: SHOW_MORE, newUsers})
+export const setCurrentPage = (newCurrentPage) => ({type: SET_CURRENT_PAGE, newCurrentPage})
+export const setPageCount = (newPageCount) => ({type: SET_PAGE_COUNT, newPageCount})
+export const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 
 export default usersReducer

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import classes from './UserCard.module.css'
+import {NavLink} from "react-router-dom";
 
 
 const UserCard = (props) => {
@@ -8,7 +9,9 @@ const UserCard = (props) => {
         <div className={classes.userCard}>
             <section className={`${classes.section} ${classes.section_spaceBetween}`}>
                 <span className={classes.name}>
-                    {props.name}
+                    <NavLink to={`/profile/${props.id}`}>
+                        {props.name}
+                    </NavLink>
                 </span>
                 <span className={classes.status}>
                     {props.status}

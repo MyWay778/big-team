@@ -1,6 +1,9 @@
 .userCard {
   grid-area: ucard;
   padding: 45px 45px 35px;
+  min-height: 369px;
+  width: 600px;
+  position: relative;
 }
 
 .card {
@@ -16,4 +19,10 @@
 .itemCard__answer {
   white-space: nowrap;
   padding: 10px 0 10px 20px;
+}
+.userCard > div[class*='preloader'] {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

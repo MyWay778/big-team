@@ -1,7 +1,7 @@
 import React from 'react'
 
 import classes from './FriendsList.module.css'
-import UserAva from "../../Header/UserPanel/UserAva/UserAva";
+import UserAva from "../../Header/UserPanelContainer/UserPanel/UserAva/UserAva";
 
 import HeaderFour from "../../MainContent/ContentProfile/UserCard/MainInfo/TextBlock/HeaderFour/HeaderFour";
 

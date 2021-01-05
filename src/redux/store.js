@@ -1,4 +1,4 @@
-import postsReducer from "./postsReducer";
+import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 
 const store = {
@@ -38,7 +38,7 @@ const store = {
     },
     dispatch(action) {
 
-        this._state.postsData = postsReducer(this._state.postsData, action)
+        this._state.postsData = profileReducer(this._state.postsData, action)
         this._state.dialogsData = dialogsReducer(this._state.dialogsData, action)
         this._callSubscriber(this)
     }

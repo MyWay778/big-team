@@ -1,8 +1,18 @@
 .additionCard {
   grid-area: adc;
+  padding: 45px 45px 35px;
 }
-
+.additionCard > h4:first-child {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
 .card {
   background-color: var(--color-background-card);
   border-radius: 15px;
+}
+.contentBlock {
+  margin-top: 25px;
+}
+.contentBlock > div:nth-child(n+2) {
+  margin-top: 20px;
 }

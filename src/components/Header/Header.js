@@ -3,9 +3,9 @@ import classes from './Header.module.css'
 import Logo from './Logo/Logo'
 import Nav from './Nav/Nav'
 import Search from './Search/Search'
-import UserPanel from './UserPanel/UserPanel'
 
 import logoImg from './static/logo.png'
+import UserPanelContainer from "./UserPanelContainer/UserPanelContainer";
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
       <Logo img={logoImg} />
       <Nav />
       <Search />
-      <UserPanel />
+      <UserPanelContainer />
     </header>
   )
 }

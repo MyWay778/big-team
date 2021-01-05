@@ -6,10 +6,17 @@ import Posts from './Posts/Posts'
 
 
 const PostsCard = (props) => {
+    const handlers ={
+        handleChange: (evt) => {props.writingPost(evt.target.value)},
+        handleSubmit: (evt) => {
+            evt.preventDefault()
+            props.addPost()
+        }
+    }
   return (
     <section className={`${classes.postsCard} ${classes.card}`}>
       <HeaderFour text={props.textHeader} />
-      <Form {...props.propertiesForm} {...props.handlers}/>
+      <Form {...props.propertiesForm} {...handlers}/>
       <Posts posts={props.state}/>
     </section>
   )

@@ -8,12 +8,7 @@ const mapStateToProps = (state) => {
         messagesData: state.dialogsReducer.dialogs[0].messages
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
 
-    }
-}
-
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+const MessagesContainer = connect(mapStateToProps, null)(Messages)
 
 export default MessagesContainer

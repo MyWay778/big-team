@@ -5,11 +5,17 @@ import Form from "../../ContentProfile/PostsCard/Form/Form";
 import HeaderFour from "../../ContentProfile/UserCard/MainInfo/TextBlock/HeaderFour/HeaderFour";
 
 const WriteMessage = (props) => {
-
+    const handlers = {
+        handleChange: (evt) => {props.writingMessage(evt.target.value)},
+        handleSubmit: (evt) => {
+            evt.preventDefault()
+            props.sendMessage()
+        }
+    }
     return (
         <section className={classes.writeMessage}>
             <HeaderFour text={props.textHeader}/>
-            <Form {...props.propertiesForm} {...props.handlers} />
+            <Form {...props.propertiesForm} {...handlers} />
         </section>
     )
 }

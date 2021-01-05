@@ -2,41 +2,58 @@ import React from 'react'
 
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setIsLoadingAC,
-    setPageCountAC,
-    showMoreAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    setIsLoading,
+    setPageCount,
+    showMore,
+    unfollow
 } from "../../../../redux/usersReducer";
 import * as axios from "axios";
 import UsersCard from "./UsersCard/UsersCard";
+import {followAPI, usersAPI} from "../../../../api/api";
 
 class UsersCardContainer extends React.Component {
 
     componentDidMount() {
-        this.props.handlers.handleSetIsLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.itemCount}&page=${this.props.currentPage}`)
+        this.props.setIsLoading(true)
+        usersAPI.getUsers(this.props.itemCount, this.props.currentPage)
             .then(response  => {
-                this.props.handlers.handleShowMore(response.data.items)
-                const pageCount = Math.ceil(response.data.totalCount / this.props.itemCount)
-                this.props.handlers.handleSetPageCount(pageCount)
-                this.props.handlers.handleSetIsLoading(false)
+                this.props.showMore(response.items)
+                const pageCount = Math.ceil(response.totalCount / this.props.itemCount)
+                this.props.setPageCount(pageCount)
+                this.props.setIsLoading(false)
             })
     }
     handleSetCurrentPage = (number) => {
-        this.props.handlers.handleSetIsLoading(true)
-        this.props.handlers.handleSetCurrentPage(number)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.itemCount}&page=${number}`)
+        this.props.setIsLoading(true)
+        this.props.setCurrentPage(number)
+        usersAPI.getUsers(this.props.itemCount, number)
             .then(response  => {
-                this.props.handlers.handleShowMore(response.data.items)
-                this.props.handlers.handleSetIsLoading(false)
+                this.props.showMore(response.items)
+                this.props.setIsLoading(false)
             })
+    }
+    handleFollow = (userId) => {
+        followAPI.follow(userId)
+        .then( response => {
+            if (!response.resultCode) {
+                this.props.follow(userId)
+            }
+        })
+    }
+    handleUnFollow = (userId) => {
+        followAPI.unFollow(userId)
+        .then( response => {
+            if (!response.resultCode) {
+                this.props.unfollow(userId)
+            }
+        })
     }
     render() {
         const handlers = {
-            handleFollow: this.props.handlers.handleFollow,
-            handleUnfollow: this.props.handlers.handleUnfollow,
+            handleFollow: this.handleFollow,
+            handleUnfollow: this.handleUnFollow,
             handleSetCurrentPage: this.handleSetCurrentPage
         }
         return <UsersCard
@@ -59,32 +76,14 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handlers: {
-            handleFollow: (userId) => {
-                dispatch(followAC(userId))
-            },
-            handleUnfollow: (userId) => {
-                dispatch(unfollowAC(userId))
-            },
-            handleShowMore: (newUsers) => {
-                dispatch(showMoreAC(newUsers))
-            },
-            handleSetCurrentPage: (newCurrentPage) => {
-                dispatch(setCurrentPageAC(newCurrentPage))
-            },
-            handleSetPageCount: (newPageCount) => {
-                dispatch(setPageCountAC(newPageCount))
-            },
-            handleSetIsLoading: (isLoading) => {
-                dispatch(setIsLoadingAC(isLoading))
-            }
-
-        }
+export default connect(mapStateToProps, {
+        follow,
+        unfollow,
+        showMore,
+        setCurrentPage,
+        setPageCount,
+        setIsLoading
     }
-}
-
-export default  connect(mapStateToProps, mapDispatchToProps)(UsersCardContainer)
+)(UsersCardContainer)
 
 

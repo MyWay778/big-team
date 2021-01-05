@@ -1,13 +1,13 @@
 import React from 'react'
-import userCardAvaImg from '../../../static/user-card-ava.jpg'
+import userCardAvaImg from '../../../../../static/user.svg'
 import Ava from './Ava/Ava'
 import TextBlock from './TextBlock/TextBlock'
 
-const MainInfo = () => {
+const MainInfo = props => {
   return (
     <div>
-      <Ava img={userCardAvaImg} />
-      <TextBlock />
+      <Ava img={props.photo || userCardAvaImg} />
+      <TextBlock name={props.name} status={props.status}/>
     </div>
   )
 }
