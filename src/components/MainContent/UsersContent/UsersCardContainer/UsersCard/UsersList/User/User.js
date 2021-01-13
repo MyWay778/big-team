@@ -14,7 +14,7 @@ const User = (props) => {
         name: props.name,
         status: props.status || 'Статуса нет...',
         country: props.country || '-',
-        city: props.city|| '-'
+        city: props.city || '-'
     }
     return (
         <li className={classes.user}>
@@ -22,9 +22,17 @@ const User = (props) => {
                 <NavLink to={`/profile/${props.id}`}>
                     <UserAva img={props.photos.small || defaultAvaImg} size="80"/>
                 </NavLink>
-                {props.followed?
-                    <Button text="Unfollow" handleOnClick={() => props.handleUnfollow(props.id)}/> :
-                    <Button text="Follow" handleOnClick={() => props.handleFollow(props.id)}/>
+                {props.followed ?
+                    <Button text="Unfollow"
+                            handleOnClick={() => props.handleUnfollow(props.id)}
+                            followingBtnBlock={props.followingBtnBlock}
+                            disabled={props.followingBtnBlock.some(blockId => blockId === props.id)}
+                    /> :
+                    <Button text="Follow"
+                            handleOnClick={() => props.handleFollow(props.id)}
+                            followingBtnBlock={props.followingBtnBlock}
+                            disabled={props.followingBtnBlock.some(blockId => blockId === props.id)}
+                    />
                 }
             </div>
             <UserCard {...UserCardDate} />

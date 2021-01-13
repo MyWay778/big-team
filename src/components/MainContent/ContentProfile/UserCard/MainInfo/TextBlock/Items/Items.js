@@ -5,7 +5,7 @@ import classes from './Items.module.css'
 const Items = props => {
   return (
     <div className={classes.items}>
-      <Item question="Статус" answer={props.status} />
+      <Item question="О себе" answer={props.status} />
     </div>
   )
 }

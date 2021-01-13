@@ -9,7 +9,11 @@ const UsersList = (props) => {
         <ul className={classes.usersList}>
             {
                 props.users.map( user => {
-                    return <User key={user.id} {...user} {...props.handlers} />
+                    return <User key={user.id}
+                                 {...user}
+                                 {...props.handlers}
+                                 followingBtnBlock={props.followingBtnBlock}
+                    />
                 })
             }
         </ul>

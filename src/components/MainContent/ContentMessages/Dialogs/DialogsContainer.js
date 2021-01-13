@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 const mapStateToProps = (state) => {
     return {
         textHeader: "Диалоги",
-        dialogsData: state.dialogsReducer.dialogs
+        dialogsData: state.dialogsReducer.dialogs,
+        isAuth: state.authReducer.isAuth
     }
 }
 

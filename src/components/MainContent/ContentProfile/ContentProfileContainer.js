@@ -4,7 +4,6 @@ import classes from './ContentProfile.module.css'
 import UserCard from './UserCard/UserCard'
 import AdditionCard from './AdditionCard/AdditionCard'
 import {connect} from "react-redux";
-import * as axios from "axios";
 import {setIsLoading, setUser, showAuthPage} from "../../../redux/profileReducer";
 import {withRouter} from "react-router-dom";
 import {profileAPI} from "../../../api/api";
@@ -36,7 +35,6 @@ class ContentProfile extends React.Component {
             this.props.setIsLoading(false)
         }
         if(this.props.user && this.props.isLoading) {
-            console.log("dsa")
         }
     }
     componentWillUnmount() {

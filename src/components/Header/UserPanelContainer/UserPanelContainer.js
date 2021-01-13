@@ -2,20 +2,11 @@ import React from 'react'
 
 import {connect} from "react-redux";
 import UserPanel from "./UserPanel/UserPanel";
-import {setAuth} from "../../../redux/authReducer";
-import {authAPI} from "../../../api/api";
-
+import {auth} from "../../../redux/authReducer";
 
 class UserPanelContainer extends React.Component {
   componentDidMount() {
-    authAPI.authMe().then(response => {
-      if(!response.resultCode) {
-        const {id, login, email} = response.data
-        this.props.setAuth(id, login, email )
-      } else {
-        this.props.setAuth(0, null, null )
-      }
-    })
+    this.props.auth()
   }
   render () {
     const userPanelProps = {
@@ -39,4 +30,4 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps,{setAuth})(UserPanelContainer)
+export default connect(mapStateToProps,{auth})(UserPanelContainer)

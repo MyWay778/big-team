@@ -6,6 +6,7 @@ import ContentProfileContainer from './ContentProfile/ContentProfileContainer'
 import {Route} from 'react-router-dom'
 import ContentMessages from "./ContentMessages/ContentMessages";
 import UsersContent from "./UsersContent/UsersContent";
+import Login from "./Login/Login";
 
 const Content = () => {
     return (
@@ -13,6 +14,7 @@ const Content = () => {
             <Route path="/profile/:userId?" render={() => <ContentProfileContainer />} />
             <Route path="/messages" render={() => <ContentMessages />} />
             <Route path="/users" render={() => <UsersContent />} />
+            <Route path="/login" render={() => <Login />} />
         </div>
     )
 }

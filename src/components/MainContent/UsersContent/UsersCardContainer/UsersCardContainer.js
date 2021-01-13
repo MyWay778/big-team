@@ -1,59 +1,23 @@
 import React from 'react'
 
 import {connect} from "react-redux";
-import {
-    follow,
-    setCurrentPage,
-    setIsLoading,
-    setPageCount,
-    showMore,
-    unfollow
-} from "../../../../redux/usersReducer";
-import * as axios from "axios";
+import { follow, getUsers, unfollow } from "../../../../redux/usersReducer";
 import UsersCard from "./UsersCard/UsersCard";
-import {followAPI, usersAPI} from "../../../../api/api";
 
 class UsersCardContainer extends React.Component {
 
     componentDidMount() {
-        this.props.setIsLoading(true)
-        usersAPI.getUsers(this.props.itemCount, this.props.currentPage)
-            .then(response  => {
-                this.props.showMore(response.items)
-                const pageCount = Math.ceil(response.totalCount / this.props.itemCount)
-                this.props.setPageCount(pageCount)
-                this.props.setIsLoading(false)
-            })
+        this.props.getUsers(this.props.itemCount, this.props.currentPage)
     }
+
     handleSetCurrentPage = (number) => {
-        this.props.setIsLoading(true)
-        this.props.setCurrentPage(number)
-        usersAPI.getUsers(this.props.itemCount, number)
-            .then(response  => {
-                this.props.showMore(response.items)
-                this.props.setIsLoading(false)
-            })
+        this.props.getUsers(this.props.itemCount, number) ///!!!
     }
-    handleFollow = (userId) => {
-        followAPI.follow(userId)
-        .then( response => {
-            if (!response.resultCode) {
-                this.props.follow(userId)
-            }
-        })
-    }
-    handleUnFollow = (userId) => {
-        followAPI.unFollow(userId)
-        .then( response => {
-            if (!response.resultCode) {
-                this.props.unfollow(userId)
-            }
-        })
-    }
+
     render() {
         const handlers = {
-            handleFollow: this.handleFollow,
-            handleUnfollow: this.handleUnFollow,
+            handleFollow: this.props.follow,
+            handleUnfollow: this.props.unfollow,
             handleSetCurrentPage: this.handleSetCurrentPage
         }
         return <UsersCard
@@ -62,6 +26,7 @@ class UsersCardContainer extends React.Component {
             pageCount={this.props.pageCount}
             currentPage={this.props.currentPage}
             isLoading={this.props.isLoading}
+            followingBtnBlock={this.props.followingBtnBlock}
         />
     }
 }
@@ -72,18 +37,11 @@ const mapStateToProps = (state) => {
         itemCount: state.usersReducer.itemCount,
         pageCount: state.usersReducer.pageCount,
         currentPage: state.usersReducer.currentPage,
-        isLoading: state.usersReducer.isLoading
+        isLoading: state.usersReducer.isLoading,
+        followingBtnBlock: state.usersReducer.followingBtnBlock
     }
 }
 
-export default connect(mapStateToProps, {
-        follow,
-        unfollow,
-        showMore,
-        setCurrentPage,
-        setPageCount,
-        setIsLoading
-    }
-)(UsersCardContainer)
+export default connect(mapStateToProps, { follow, unfollow, getUsers, })(UsersCardContainer)
 
 

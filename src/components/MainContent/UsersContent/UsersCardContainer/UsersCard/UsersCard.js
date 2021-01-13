@@ -15,7 +15,10 @@ const UsersCard = props => {
     return (
         <div className={classes.usersCard}>
             <HeaderFour text="Пользователи"/>
-            <UsersList users={props.users} handlers={usersListHandlers}/>
+            <UsersList users={props.users}
+                       handlers={usersListHandlers}
+                       followingBtnBlock={props.followingBtnBlock}
+            />
             {props.isLoading ? <Preloader/> : undefined}
             <PageSelector
                 pageCount={props.pageCount}

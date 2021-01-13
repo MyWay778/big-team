@@ -23,14 +23,11 @@ export const profileAPI = {
 export const usersAPI = {
     getUsers(itemCount, currentPage) {
         return instance.get(`users?count=${itemCount}&page=${currentPage}`).then(response => response.data)
-    }
-}
-
-export const followAPI = {
+    },
     follow(userId) {
         return instance.post(`follow/${userId}`,{}).then(response => response.data)
     },
-    unFollow(userId) {
+    unfollow(userId) {
         return instance.delete(`follow/${userId}`).then(response => response.data)
     }
 }
