@@ -7,7 +7,10 @@ const TextBlock = props => {
   return (
     <div className={classes.textBlock}>
       <HeaderFour text={props.name} />
-      <Items status={props.status}/>
+      <Items aboutMe={props.aboutMe}
+             userStatus={props.userStatus}
+             sendStatus={props.sendStatus}
+             myPage={props.myPage} />
     </div>
   )
 }

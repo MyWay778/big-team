@@ -1,12 +1,15 @@
+import {profileAPI} from "../api/api";
+
 const
 WRITING_POST = "WRITING-POST",
 ADD_POST = "ADD-POST",
 SET_USER = "SET_USER",
 SET_IS_LOADING = "SET_IS_LOADING",
-SHOW_AUTH_PAGE = "SHOW_AUTH_PAGE"
+SET_STATUS = "SET_STATUS"
 
 let initialState = {
     user: undefined,
+    status: null,
     posts: [
         {id: 1, message: 'Всем привет!) Как у вас дела???'},
         {id: 2, message: 'У меня все ОК!'}
@@ -39,10 +42,10 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: action.isLoading
             }
-        case SHOW_AUTH_PAGE :
+        case SET_STATUS :
             return {
                 ...state,
-                showAuthPage: action.isShow
+                status: action.status
             }
         default :
             return state
@@ -52,8 +55,33 @@ const profileReducer = (state = initialState, action) => {
 export const writingPost = (text) => ({type: WRITING_POST, newText: text})
 export const addPost= () => ({type: ADD_POST})
 export const setUser= (user) => ({type: SET_USER, user})
-export const setIsLoading= (isLoading) => {
-    return {type: SET_IS_LOADING, isLoading}}
-export const showAuthPage = (isShow) => ({type: SHOW_AUTH_PAGE, isShow})
+export const setIsLoading= (isLoading) => ({type: SET_IS_LOADING, isLoading})
+export const setStatus = (status) => ({type: SET_STATUS, status})
 
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(setIsLoading(true))
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUser(response))
+                profileAPI.getStatus(userId)
+                    .then( status => {
+                        dispatch(setStatus(status))
+                    })
+                dispatch(setIsLoading(false))
+            })
+
+    }
+}
+
+export const sendStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.setStatus(status)
+            .then(response => {
+                if (!response.resultCode) {
+                    dispatch(setStatus(status))
+                }
+            })
+    }
+}
 export default profileReducer

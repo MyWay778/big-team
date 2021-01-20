@@ -11,8 +11,11 @@ const UserCard = props => {
     if (!props.isLoading) {
         mainInfoProps = {
             name: props.name,
-            status:props.status,
-            photo: props.photo
+            aboutMe:props.aboutMe,
+            photo: props.photo,
+            userStatus: props.userStatus,
+            sendStatus: props.sendStatus,
+            myPage: props.myPage
         }
         secondaryInfoProps = {
             isLookingForAJob: props.isLookingForAJob,
@@ -21,8 +24,6 @@ const UserCard = props => {
     }
         let output = props.isLoading ?
                 <Preloader /> :
-                props.showAuthPage ?
-                <p>Please authorization</p> :
                 [<MainInfo key={0} {...mainInfoProps} />, <SecondaryInfo key={1} {...secondaryInfoProps}/>]
   return (
     <section className={`${classes.userCard} ${classes.card}`}>

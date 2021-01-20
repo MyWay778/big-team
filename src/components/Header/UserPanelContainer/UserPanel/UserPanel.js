@@ -11,7 +11,7 @@ const UserPanel = props => {
     <div className={classes.userPanel}>
         {props.isAuth ?  [<Greeting key={0} name={props.name} />,
             <UserAva key={1} img={props.userAva || UserAvaDefault}/>] :
-            <NavLink to={""}>Войти</NavLink>
+            <NavLink to="/login">Войти</NavLink>
            }
     </div>
   )

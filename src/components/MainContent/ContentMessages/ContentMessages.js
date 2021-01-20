@@ -4,8 +4,9 @@ import classes from './ContentMessages.module.css'
 import DialogsContainer from "./Dialogs/DialogsContainer";
 import MessagesContainer from "./Messages/MessagesContainer";
 import WriteMessageContainer from "./WriteMessage/WriteMessageContainer";
+import withAuthRedirect from "../../../hoc/withAuthRedirect";
 
-const ContentMessages = () => {
+let ContentMessages = () => {
   return (
     <div className={classes.contentMessages}>
       <DialogsContainer />
@@ -15,4 +16,4 @@ const ContentMessages = () => {
   )
 }
 
-export default ContentMessages
+export default withAuthRedirect(ContentMessages)

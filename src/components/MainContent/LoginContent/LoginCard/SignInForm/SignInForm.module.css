@@ -1,0 +1,30 @@
+.form{
+    width: 230px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.input {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.input > span {
+    width: 67px;
+    text-align: right;
+}
+.input > input {
+    height: 25px;
+    width: 150px;
+    padding-left: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+.form > label > input:focus {
+    box-shadow: 0 0 0 2px var(--color-additional)
+}
+
+.submit {
+    composes: btn_submit from global;
+    margin-top: 20px;
+    margin-left: 80px;
+}

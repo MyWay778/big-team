@@ -4,10 +4,17 @@ import Ava from './Ava/Ava'
 import TextBlock from './TextBlock/TextBlock'
 
 const MainInfo = props => {
+    const textBlockProps = {
+        name: props.name,
+        aboutMe: props.aboutMe,
+        userStatus: props.userStatus,
+        sendStatus: props.sendStatus,
+        myPage: props.myPage
+    }
   return (
     <div>
       <Ava img={props.photo || userCardAvaImg} />
-      <TextBlock name={props.name} status={props.status}/>
+      <TextBlock {...textBlockProps}/>
     </div>
   )
 }

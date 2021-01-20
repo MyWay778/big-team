@@ -1,0 +1,8 @@
+.loginCard {
+    width: 600px;
+    min-height: 369px;
+    margin-left: 40px;
+    padding: 45px;
+    background-color: var(--color-background-card);
+    border-radius: 15px;
+}

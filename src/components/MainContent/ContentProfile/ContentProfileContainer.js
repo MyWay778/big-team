@@ -4,41 +4,24 @@ import classes from './ContentProfile.module.css'
 import UserCard from './UserCard/UserCard'
 import AdditionCard from './AdditionCard/AdditionCard'
 import {connect} from "react-redux";
-import {setIsLoading, setUser, showAuthPage} from "../../../redux/profileReducer";
+import {getProfile, sendStatus} from "../../../redux/profileReducer";
 import {withRouter} from "react-router-dom";
-import {profileAPI} from "../../../api/api";
+import withAuthRedirect from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class ContentProfile extends React.Component {
     componentDidMount() {
-        this.props.setIsLoading(true)
         let userId = this.props.match.params.userId || this.props.authUser
         if (userId) {
-            profileAPI.getProfile(userId)
-                .then(response => {
-                    this.props.setUser(response)
-                    this.props.setIsLoading(false)
-                })
+            this.props.getProfile(userId)
         }
     }
 
-    componentDidUpdate() {
-        if (!(this.props.match.params.userId) && this.props.authUser) {
-            this.props.showAuthPage(false)
-            profileAPI.getProfile(this.props.authUser)
-                .then(response => {
-                    this.props.setUser(response)
-                    this.props.setIsLoading(false)
-                })
-        } else if (!(this.props.match.params.userId) && (this.props.authUser === 0)) {
-            this.props.showAuthPage(true)
-            this.props.setIsLoading(false)
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.getProfile(this.props.authUser)
         }
-        if(this.props.user && this.props.isLoading) {
-        }
-    }
-    componentWillUnmount() {
-        this.props.showAuthPage(false)
     }
 
     render() {
@@ -46,10 +29,13 @@ class ContentProfile extends React.Component {
         if (this.props.user) {
             userCardProps = {
                 name: this.props.user.fullName,
-                status: this.props.user.aboutMe,
+                aboutMe: this.props.user.aboutMe,
                 photo: this.props.user.photos.small,
                 isLookingForAJob: this.props.user.lookingForAJob,
                 additionalInfo: this.props.user.lookingForAJobDescription,
+                userStatus: this.props.userStatus,
+                sendStatus: this.props.sendStatus,
+                myPage: !this.props.match.params.userId
             }
             additionCardProps = {
                 contacts: this.props.user.contacts
@@ -59,7 +45,6 @@ class ContentProfile extends React.Component {
         return (
             <div className={classes.contentProfile}>
                 <UserCard
-                    showAuthPage={this.props.isShowAuthPage}
                     isLoading={this.props.isLoading}
                     {...userCardProps} />
                 <AdditionCard isLoading={this.props.isLoading} {...additionCardProps} />
@@ -70,12 +55,16 @@ class ContentProfile extends React.Component {
 }
 
 const mapStateToProps = state => {
-
     return {
         user: state.profilePage.user,
         authUser: state.authReducer.user.id,
         isLoading: state.profilePage.isLoading,
-        isShowAuthPage: state.profilePage.showAuthPage
+        isAuth: state.authReducer.isAuth,
+        userStatus: state.profilePage.status
     }
 }
-export default connect(mapStateToProps, {setUser, setIsLoading, showAuthPage})(withRouter(ContentProfile))
+export default compose(
+    connect(mapStateToProps, {getProfile, sendStatus}),
+    withRouter,
+    withAuthRedirect,
+)(ContentProfile)
