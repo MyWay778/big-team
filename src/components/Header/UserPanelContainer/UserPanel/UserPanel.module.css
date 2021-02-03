@@ -1,5 +1,5 @@
 .userPanel {
-  flex: 0.1 0 200px;
+  flex: 0.1 0 230px;
   text-align: right;
   align-self: center;
 }
@@ -27,4 +27,16 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
+}
+.logout {
+  width: 20px;
+  height: 20px;
+  vertical-align: 18px;
+  margin-left: 15px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  background-image: url('../../static/logout.svg');
+  cursor: pointer;
 }

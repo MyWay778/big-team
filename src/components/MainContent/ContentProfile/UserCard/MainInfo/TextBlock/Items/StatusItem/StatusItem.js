@@ -1,40 +1,36 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
-class StatusItem extends React.Component {
-    state = {
-        editMode: false,
-        value: this.props.userStatus || ''
-    }
-    componentDidUpdate(prevProps) {
-        if(this.props.userStatus && this.props.userStatus !== prevProps.userStatus) {
-            this.setState({value: this.props.userStatus})
+const StatusItem = ({userStatus, sendStatus, myPage, ...props}) => {
+    const [editMode, setEditMode] = useState(false)
+    const [status, setStatus] = useState(userStatus || "")
+
+    useEffect(() => {
+        setStatus(userStatus)
+    }, [userStatus])
+
+    const activateEditModeHandler = () => {
+        if (myPage) {
+            setEditMode(true)
         }
     }
-    activateEditModeHandler = () => {
-        if (this.props.myPage) {
-            this.setState({editMode: true})
-        }
+    const deactivateEditMode = () => {
+        setEditMode(false)
+        sendStatus(status)
     }
-    deactivateEditMode = (evt) => {
-        this.setState({
-            editMode: false,
-        })
-        this.props.sendStatus(this.state.value)
-    }
-    changeUserStatusHandler = (evt) => {
-        this.setState({value: evt.target.value})
+    const changeUserStatusHandler = (e) => {
+        setStatus(e.target.value)
     }
 
-    render() {
-        return <div>
-            {!this.state.editMode &&
-                <span onClick={this.activateEditModeHandler}>{this.props.userStatus || 'статуса нет'}</span>
-            }
-            {this.state.editMode &&
-                <input autoFocus onChange={this.changeUserStatusHandler} onBlur={this.deactivateEditMode} value={this.state.value}/>
-            }
-        </div>
-    }
+    return <div>
+        {!editMode &&
+        <span onClick={activateEditModeHandler}>{userStatus || 'статуса нет'}</span>
+        }
+        {editMode &&
+        <input autoFocus onChange={changeUserStatusHandler} onBlur={deactivateEditMode}
+               value={status}/>
+        }
+    </div>
+
 }
 
 export default StatusItem

@@ -80,7 +80,7 @@ export const setPageCount = (newPageCount) => ({type: SET_PAGE_COUNT, newPageCou
 export const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 export const toggleFollowingBtnBlock = (isBlock, userId) => ({type: TOGGLE_FOLLOWING_BTN_BLOCK, isBlock, userId})
 
-export const getUsers = (itemCount, currentPage) => {
+export const requestUsers = (itemCount, currentPage) => {
     return (dispatch) => {
         dispatch(setIsLoading(true))
         usersAPI.getUsers(itemCount, currentPage)

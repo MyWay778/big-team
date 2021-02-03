@@ -1,6 +1,6 @@
 import React from 'react'
-import UserAva from '../../../../../Header/UserPanel/UserAva/UserAva'
 import classes from './Post.module.css'
+import UserAva from "../../../../../Header/UserPanelContainer/UserPanel/UserAva/UserAva";
 
 const Post = props => {
   return (

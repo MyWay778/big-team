@@ -4,10 +4,11 @@ import classes from './ContentProfile.module.css'
 import UserCard from './UserCard/UserCard'
 import AdditionCard from './AdditionCard/AdditionCard'
 import {connect} from "react-redux";
-import {getProfile, sendStatus} from "../../../redux/profileReducer";
-import {withRouter} from "react-router-dom";
+import {getProfile, sendPost, sendStatus} from "../../../redux/profileReducer";
+import {Redirect, withRouter} from "react-router-dom";
 import withAuthRedirect from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import PostsCard from "./PostsCard/PostsCard";
 
 
 class ContentProfile extends React.Component {
@@ -25,7 +26,7 @@ class ContentProfile extends React.Component {
     }
 
     render() {
-        let userCardProps, additionCardProps
+        let userCardProps, additionCardProps , postsCardProps
         if (this.props.user) {
             userCardProps = {
                 name: this.props.user.fullName,
@@ -42,13 +43,19 @@ class ContentProfile extends React.Component {
             }
 
         }
+        postsCardProps = {
+            textHeader: "Мои новости",
+            posts: this.props.posts,
+            isLoading: this.props.isLoading,
+            handleSubmit: this.props.sendPost
+        }
         return (
             <div className={classes.contentProfile}>
                 <UserCard
                     isLoading={this.props.isLoading}
                     {...userCardProps} />
                 <AdditionCard isLoading={this.props.isLoading} {...additionCardProps} />
-                {/*<PostsCardContainer isLoading={this.props.isLoading} />*/}
+                <PostsCard {...postsCardProps} />
             </div>
         )
     }
@@ -60,11 +67,12 @@ const mapStateToProps = state => {
         authUser: state.authReducer.user.id,
         isLoading: state.profilePage.isLoading,
         isAuth: state.authReducer.isAuth,
-        userStatus: state.profilePage.status
+        userStatus: state.profilePage.status,
+        posts: state.profilePage.posts
     }
 }
 export default compose(
-    connect(mapStateToProps, {getProfile, sendStatus}),
+    connect(mapStateToProps, {getProfile, sendStatus, sendPost}),
     withRouter,
-    withAuthRedirect,
+    withAuthRedirect
 )(ContentProfile)

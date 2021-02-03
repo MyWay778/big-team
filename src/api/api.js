@@ -11,6 +11,12 @@ const instance = axios.create({
 export const authAPI =  {
     authMe () {
         return instance.get('auth/me').then(response => response.data)
+    },
+    signIn (values) {
+        return instance.post('auth/login', {...values}).then( response => response.data)
+    },
+    signOut () {
+        return instance.delete('auth/login').then( response => response.data)
     }
 }
 

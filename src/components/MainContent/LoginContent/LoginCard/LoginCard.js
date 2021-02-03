@@ -9,7 +9,10 @@ const LoginCard = props => {
     return (
         <section className={classes.loginCard}>
             <HeaderFour text="Вход" />
-            <SignInForm />
+            <SignInForm
+                signInHandler={props.signInHandler}
+                backendMessageCode={props.backendMessageCode}
+            />
         </section>
     )
 }

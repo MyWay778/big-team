@@ -29,7 +29,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST :
             return {
                 ...state,
-                posts: [...state.posts, {id:3, message: state.newPostValue}],
+                posts: [...state.posts, {id:3, message: action.post}],
                 newPostValue: ""
             }
         case SET_USER :
@@ -53,7 +53,7 @@ const profileReducer = (state = initialState, action) => {
 }
 
 export const writingPost = (text) => ({type: WRITING_POST, newText: text})
-export const addPost= () => ({type: ADD_POST})
+export const addPost= (post) => ({type: ADD_POST, post})
 export const setUser= (user) => ({type: SET_USER, user})
 export const setIsLoading= (isLoading) => ({type: SET_IS_LOADING, isLoading})
 export const setStatus = (status) => ({type: SET_STATUS, status})
@@ -84,4 +84,10 @@ export const sendStatus = (status) => {
             })
     }
 }
+export const sendPost = (post) => {
+    return (dispatch) => {
+        dispatch(addPost(post))
+    }
+}
+
 export default profileReducer

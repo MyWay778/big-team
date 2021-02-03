@@ -1,17 +1,25 @@
 import React from 'react'
 
 import {connect} from "react-redux";
-import { follow, getUsers, unfollow } from "../../../../redux/usersReducer";
+import { follow, requestUsers, unfollow } from "../../../../redux/usersReducer";
 import UsersCard from "./UsersCard/UsersCard";
+import {
+    getFollowingBtnBlock,
+    getIsLoading,
+    getItemCount,
+    getPage,
+    getPageCount,
+    getUsers
+} from "../../../../redux/usersSelectors";
 
 class UsersCardContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.itemCount, this.props.currentPage)
+        this.props.requestUsers(this.props.itemCount, this.props.currentPage)
     }
 
     handleSetCurrentPage = (number) => {
-        this.props.getUsers(this.props.itemCount, number) ///!!!
+        this.props.requestUsers(this.props.itemCount, number) ///!!!
     }
 
     render() {
@@ -33,15 +41,15 @@ class UsersCardContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersReducer.users,
-        itemCount: state.usersReducer.itemCount,
-        pageCount: state.usersReducer.pageCount,
-        currentPage: state.usersReducer.currentPage,
-        isLoading: state.usersReducer.isLoading,
-        followingBtnBlock: state.usersReducer.followingBtnBlock
+        users: getUsers(state),
+        itemCount: getItemCount(state),
+        pageCount: getPageCount(state),
+        currentPage: getPage(state),
+        isLoading: getIsLoading(state),
+        followingBtnBlock: getFollowingBtnBlock(state)
     }
 }
 
-export default connect(mapStateToProps, { follow, unfollow, getUsers, })(UsersCardContainer)
+export default connect(mapStateToProps, { follow, unfollow, requestUsers, })(UsersCardContainer)
 
 
