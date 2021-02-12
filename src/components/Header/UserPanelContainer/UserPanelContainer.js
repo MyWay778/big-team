@@ -2,7 +2,7 @@ import React from 'react'
 
 import {connect} from "react-redux";
 import UserPanel from "./UserPanel/UserPanel";
-import {auth, signOut} from "../../../redux/authReducer";
+import {signOut} from "../../../redux/authReducer";
 
 class UserPanelContainer extends React.Component {
   render () {

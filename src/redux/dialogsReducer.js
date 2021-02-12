@@ -1,5 +1,5 @@
-const WRITING_MESSAGE = "WRITING-MESSAGE"
-const SEND_MESSAGE = "SEND-MESSAGE"
+const WRITING_MESSAGE = "bg-team/dialogsReducer/WRITING-MESSAGE"
+const SEND_MESSAGE = "bg-team/dialogsReducer/SEND-MESSAGE"
 
 let initialState = {
     dialogs: [
@@ -17,13 +17,11 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case WRITING_MESSAGE : {
-            const stateCopy  = {
+        case WRITING_MESSAGE :
+            return {
                 ...state,
                 newMessage: action.newText
             }
-            return stateCopy
-        }
         case SEND_MESSAGE : {
             const newMessage = {
                 id: 3, out: true, text: state.newMessage

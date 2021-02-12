@@ -9,3 +9,7 @@
   left: 230px;
   bottom: 45px;
 }
+[class*="paginator"] {
+  max-width: 75%;
+  margin-top: 3rem;
+}

@@ -3,34 +3,53 @@ import Header from './components/Header/Header'
 
 import NavAside from './components/NavAside/NavAside'
 import Content from "./components/MainContent/Content";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initialize} from "./redux/appReducer"
 import Preloader from "./components/MainContent/UsersContent/UsersCardContainer/UsersCard/Preloader/Preloader";
+import store from "./redux/redux-store";
+import {HashRouter} from "react-router-dom";
 
 class App extends React.Component {
     componentDidMount() {
         this.props.initialize()
     }
-  render() {
+
+    render() {
         if (!this.props.successfulInitialization) {
-            return <Preloader />
+            return <Preloader/>
         }
-    return (
+        return (
             <div className="page-wrapper">
                 <Header/>
                 <main>
-                    <NavAside />
-                    <Content />
+                    <NavAside/>
+                    <Content/>
                 </main>
                 {/* <Footer /> */}
             </div>
-    )
-  }
+        )
+    }
 }
+
 const mapStateToProps = (state) => {
     return {
         successfulInitialization: state.appReducer.successfulInitialization
     }
 }
 
-export default connect(mapStateToProps, {initialize})(App)
+const AppContainer = connect(mapStateToProps, {initialize})(App)
+
+const BigTeamApp = () => {
+    return (
+        <HashRouter>
+            <Provider store={store}>
+                <AppContainer/>
+            </Provider>
+        </HashRouter>
+    )
+}
+
+export default BigTeamApp
+
+
+

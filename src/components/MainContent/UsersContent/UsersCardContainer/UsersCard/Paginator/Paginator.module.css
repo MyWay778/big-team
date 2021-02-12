@@ -1,0 +1,41 @@
+.paginator {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1rem;
+}
+.button {
+    padding: 0.1rem 0.4rem 0.2rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    background-color: var(--color-highlight);
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: var(--color-additional);
+}
+.button_big {
+    flex-basis: 3.6rem;
+}
+.button_small {
+    flex-basis: 2rem;
+}
+.pages {
+    display: flex;
+    flex-basis: 15rem;
+    flex-grow: 1;
+    column-gap: .5rem;
+    justify-content: space-between;
+}
+.pages > span {
+    cursor: pointer;
+}
+.pages > span:hover {
+    color: var(--color-additional);
+}
+.active {
+    font-weight: bold;
+    color: var(--color-highlight);
+}

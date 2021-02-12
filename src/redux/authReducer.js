@@ -49,24 +49,22 @@ export const auth = () => {
 }
 
 export const signIn = (values) => {
-    return (dispatch) => {
-        authAPI.signIn(values).then( response => {
+    return async (dispatch) => {
+       const response = await authAPI.signIn(values)
             if (!response.resultCode) {
                 dispatch(auth())
                 dispatch(setBackendMessageCode(0))
             }else {
                 dispatch(setBackendMessageCode(response.resultCode))
             }
-        })
     }
 }
 export const signOut = () => {
-    return (dispatch) => {
-        authAPI.signOut().then( response => {
+    return async (dispatch) => {
+        const  response = await authAPI.signOut()
             if(!response.resultCode) {
                 dispatch(auth())
             }
-        })
     }
 }
 

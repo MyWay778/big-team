@@ -5,6 +5,7 @@ import UsersList from "./UsersList/UsersList";
 import HeaderFour from "../../../ContentProfile/UserCard/MainInfo/TextBlock/HeaderFour/HeaderFour";
 import PageSelector from "./PageSelector/PageSelector";
 import Preloader from "./Preloader/Preloader";
+import Paginator from "./Paginator/Paginator";
 
 
 const UsersCard = props => {
@@ -20,7 +21,7 @@ const UsersCard = props => {
                        followingBtnBlock={props.followingBtnBlock}
             />
             {props.isLoading ? <Preloader/> : undefined}
-            <PageSelector
+            <Paginator
                 pageCount={props.pageCount}
                 currentPage={props.currentPage}
                 handleSetCurrentPage={props.handlers.handleSetCurrentPage}

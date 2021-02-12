@@ -1,13 +1,14 @@
 import {usersAPI} from "../api/api";
+import {followToggleCreator} from "../halpers/followToggleCreator";
 
 const
-    FOLLOW = "FOLLOW",
-    UNFOLLOW = "UNFOLLOW",
-    SHOW_MORE = "SHOW_MORE",
-    SET_CURRENT_PAGE = "SET_CURRENT_PAGE",
-    SET_PAGE_COUNT = "SET_PAGE_COUNT",
-    SET_IS_LOADING = "SET_IS_LOADING",
-    TOGGLE_FOLLOWING_BTN_BLOCK = "TOGGLE_FOLLOWING_BTN_BLOCK"
+    FOLLOW = "bg-team/usersReducer/FOLLOW",
+    UNFOLLOW = "bg-team/usersReducer/UNFOLLOW",
+    SHOW_MORE = "bg-team/usersReducer/SHOW_MORE",
+    SET_CURRENT_PAGE = "bg-team/usersReducer/SET_CURRENT_PAGE",
+    SET_PAGE_COUNT = "bg-team/usersReducer/SET_PAGE_COUNT",
+    SET_IS_LOADING = "bg-team/usersReducer/SET_IS_LOADING",
+    TOGGLE_FOLLOWING_BTN_BLOCK = "bg-team/usersReducer/TOGGLE_FOLLOWING_BTN_BLOCK"
 
 
 let initialState = {
@@ -72,63 +73,36 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const setFollow = (userId) => ({type: FOLLOW, userId})
-export const setUnfollow = (userId) => ({type: UNFOLLOW, userId})
-export const showMore = (newUsers) => ({type: SHOW_MORE, newUsers})
-export const setCurrentPage = (newCurrentPage) => ({type: SET_CURRENT_PAGE, newCurrentPage})
-export const setPageCount = (newPageCount) => ({type: SET_PAGE_COUNT, newPageCount})
-export const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
-export const toggleFollowingBtnBlock = (isBlock, userId) => ({type: TOGGLE_FOLLOWING_BTN_BLOCK, isBlock, userId})
+const setFollow = (userId) => ({type: FOLLOW, userId})
+const setUnfollow = (userId) => ({type: UNFOLLOW, userId})
+const showMore = (newUsers) => ({type: SHOW_MORE, newUsers})
+const setCurrentPage = (newCurrentPage) => ({type: SET_CURRENT_PAGE, newCurrentPage})
+const setPageCount = (newPageCount) => ({type: SET_PAGE_COUNT, newPageCount})
+const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
+const toggleFollowingBtnBlock = (isBlock, userId) => ({type: TOGGLE_FOLLOWING_BTN_BLOCK, isBlock, userId})
 
 export const requestUsers = (itemCount, currentPage) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setIsLoading(true))
-        usersAPI.getUsers(itemCount, currentPage)
-            .then(response => {
-                const pageCount = Math.ceil(response.totalCount / itemCount)
-                dispatch(setPageCount(pageCount))
-                dispatch(setCurrentPage(currentPage))
-                dispatch(showMore(response.items))
-                dispatch(setIsLoading(false))
-            })
+
+        const response = await usersAPI.getUsers(itemCount, currentPage)
+
+        const pageCount = Math.ceil(response.totalCount / itemCount)
+
+        dispatch(setPageCount(pageCount))
+        dispatch(setCurrentPage(currentPage))
+        dispatch(showMore(response.items))
+
+        dispatch(setIsLoading(false))
     }
 }
-export const switchPage = (itemCount, number) => {
-    return (dispatch) => {
-        dispatch(setIsLoading(true))
-        usersAPI.getUsers(itemCount, number)
-            .then(response => {
-                dispatch(setCurrentPage(number))
-                dispatch(showMore(response.items))
-                dispatch(setIsLoading(false))
-            })
-    }
-}
+
 export const follow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingBtnBlock(true, userId))
-        usersAPI.follow(userId)
-            .then(response => {
-                if (!response.resultCode) {
-                   dispatch(setFollow(userId))
-                }
-                dispatch(toggleFollowingBtnBlock(false, userId))
-            })
-    }
+    return  followToggleCreator(userId, usersAPI.follow, setFollow, toggleFollowingBtnBlock)
 }
+
 export const unfollow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingBtnBlock(true, userId))
-        usersAPI.unfollow(userId)
-            .then(response => {
-                if (!response.resultCode) {
-                   dispatch(setUnfollow(userId))
-                }
-                dispatch(toggleFollowingBtnBlock(false, userId))
-            })
-    }
+   return followToggleCreator(userId, usersAPI.unfollow, setUnfollow, toggleFollowingBtnBlock)
 }
-
-
 
 export default usersReducer
