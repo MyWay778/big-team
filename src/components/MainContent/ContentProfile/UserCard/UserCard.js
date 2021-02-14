@@ -15,7 +15,8 @@ const UserCard = props => {
             photo: props.photo,
             userStatus: props.userStatus,
             sendStatus: props.sendStatus,
-            myPage: props.myPage
+            myPage: props.myPage,
+            changePhoto: props.changePhoto
         }
         secondaryInfoProps = {
             isLookingForAJob: props.isLookingForAJob,

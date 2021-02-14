@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import classes from './Paginator.module.css'
+import classNames from 'classnames/bind'
 
 const Paginator = ({pageCount, currentPage, handleSetCurrentPage, portionSize = 10}) => {
+
+    const cn = classNames.bind(classes)
 
     const divideOnPortionSizeAndFloor = (value) => {
         return Math.floor(value / portionSize)
@@ -25,7 +28,7 @@ const Paginator = ({pageCount, currentPage, handleSetCurrentPage, portionSize = 
     }
 
     for (let i = firstItemInPortion; i < lastItemInPortion; i++) {
-        let span = <span className={currentPage === i ? classes.active : ''} key={i} onClick={() => {
+        let span = <span className={ cn({active: currentPage === i })} key={i} onClick={() => {
             handleSetCurrentPage(i)
         }}> {i} </span>
         pages.push(span)

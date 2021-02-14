@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import userCardAvaImg from '../../../../../static/user.svg'
 import Ava from './Ava/Ava'
 import TextBlock from './TextBlock/TextBlock'
@@ -13,7 +13,7 @@ const MainInfo = props => {
     }
   return (
     <div>
-      <Ava img={props.photo || userCardAvaImg} />
+      <Ava img={props.photo || userCardAvaImg} myPage={props.myPage} changePhotoHandler={props.changePhoto}/>
       <TextBlock {...textBlockProps}/>
     </div>
   )

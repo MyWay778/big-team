@@ -4,8 +4,8 @@ import classes from './ContentProfile.module.css'
 import UserCard from './UserCard/UserCard'
 import AdditionCard from './AdditionCard/AdditionCard'
 import {connect} from "react-redux";
-import {getProfile, sendPost, sendStatus} from "../../../redux/profileReducer";
-import {Redirect, withRouter} from "react-router-dom";
+import {changePhoto, getProfile, sendPost, sendStatus} from "../../../redux/profileReducer";
+import {withRouter} from "react-router-dom";
 import withAuthRedirect from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import PostsCard from "./PostsCard/PostsCard";
@@ -36,7 +36,8 @@ class ContentProfile extends React.Component {
                 additionalInfo: this.props.user.lookingForAJobDescription,
                 userStatus: this.props.userStatus,
                 sendStatus: this.props.sendStatus,
-                myPage: !this.props.match.params.userId
+                myPage: !this.props.match.params.userId,
+                changePhoto: this.props.changePhoto
             }
             additionCardProps = {
                 contacts: this.props.user.contacts
@@ -72,7 +73,7 @@ const mapStateToProps = state => {
     }
 }
 export default compose(
-    connect(mapStateToProps, {getProfile, sendStatus, sendPost}),
+    connect(mapStateToProps, {getProfile, sendStatus, sendPost, changePhoto}),
     withRouter,
     withAuthRedirect
 )(ContentProfile)

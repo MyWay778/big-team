@@ -1,12 +1,37 @@
 .ava__card {
   border-radius: 15px;
-}
-
-.ava_float {
-  float: left;
-}
-
-.ava {
   border: 2px solid var(--color-highlight);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
+.ava {
+  position: relative;
+}
+.editPhotoButton {
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-image: url(../../../../../../static/edit_photo.svg);
+  background-repeat: no-repeat;
+  opacity: .7;
+  visibility: hidden;
+  cursor: pointer;
+}
+.ava:hover > .editPhotoButton {
+  visibility: visible;
+}
+.ava_float {
+  float: left;
+}
+.file {
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  z-index: -10;
+}
+
+
+

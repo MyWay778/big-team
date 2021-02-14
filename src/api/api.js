@@ -29,6 +29,9 @@ export const profileAPI = {
     },
     setStatus(status) {
         return instance.put(`profile/status`,{status: status}).then(response => response.data)
+    },
+    sendPhoto(photo) {
+        return instance.put(`profile/photo`,photo).then(response => response.data)
     }
 }
 

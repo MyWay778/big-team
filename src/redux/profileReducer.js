@@ -5,7 +5,8 @@ const
     ADD_POST = "bg-team/profileReducer/ADD-POST",
     SET_USER = "bg-team/profileReducer/SET_USER",
     SET_IS_LOADING = "bg-team/profileReducer/SET_IS_LOADING",
-    SET_STATUS = "bg-team/profileReducer/SET_STATUS"
+    SET_STATUS = "bg-team/profileReducer/SET_STATUS",
+    SET_PHOTOS = "bg-team/profileReducer/SET_PHOTOS"
 
 let initialState = {
     user: undefined,
@@ -42,6 +43,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case SET_PHOTOS :
+            return {
+                ...state,
+                user: {...state.user, photos: action.photos}
+            }
         default :
             return state
     }
@@ -51,6 +57,7 @@ const addPost = (post) => ({type: ADD_POST, post})
 const setUser = (user) => ({type: SET_USER, user})
 const setIsLoading = (isLoading) => ({type: SET_IS_LOADING, isLoading})
 const setStatus = (status) => ({type: SET_STATUS, status})
+const setPhoto = (photos) => ({type: SET_PHOTOS, photos})
 
 export const getProfile = (userId) => {
     return async (dispatch) => {
@@ -79,5 +86,12 @@ export const sendPost = (post) => {
         dispatch(addPost(post))
     }
 }
-
+export const changePhoto = (photo) =>{
+    return async (dispatch) => {
+        const response = await profileAPI.sendPhoto(photo)
+        if (!response.resultCode) {
+            dispatch(setPhoto(response.data.photos))
+        }
+    }
+}
 export default profileReducer
