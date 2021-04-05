@@ -7,7 +7,7 @@ import {connect, Provider} from "react-redux";
 import {initialize} from "./redux/appReducer"
 import Preloader from "./components/MainContent/UsersContent/UsersCardContainer/UsersCard/Preloader/Preloader";
 import store from "./redux/redux-store";
-import {HashRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 class App extends React.Component {
     componentDidMount() {
@@ -41,11 +41,11 @@ const AppContainer = connect(mapStateToProps, {initialize})(App)
 
 const BigTeamApp = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
 
