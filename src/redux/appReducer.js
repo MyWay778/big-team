@@ -13,7 +13,6 @@ const appReducer = (state = initialState, action) => {
                 ...state,
                 successfulInitialization: true
             }
-            break
         default :
             return state
     }

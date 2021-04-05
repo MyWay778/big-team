@@ -1,8 +1,9 @@
-import {authAPI} from "../api/api";
+import {authAPI, securityAPI} from "../api/api";
 
 const
     SET_AUTH = "bg-team/authReducer/SET_AUTH",
-    SET_BACKEND_MESSAGE_CODE = "bg-team/authReducer/SET_BACKEND_MESSAGE_CODE"
+    SET_BACKEND_MESSAGE_CODE = "bg-team/authReducer/SET_BACKEND_MESSAGE_CODE",
+    SET_CAPTCHA_URL = "bg-team/authReducer/SET_CAPTCHA_URL"
 
 let initialState = {
     user: {
@@ -11,7 +12,8 @@ let initialState = {
         login: null
     },
     isAuth: false,
-    backendMessageCode: null
+    backendMessageCode: null,
+    captchaUrl: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -27,6 +29,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 backendMessageCode: action.code
             }
+        case SET_CAPTCHA_URL :
+            return {
+                ...state,
+                ...action.payload
+            }
         default :
             return state
     }
@@ -34,6 +41,7 @@ const authReducer = (state = initialState, action) => {
 
 const setAuth = (id, login, email) => ({type: SET_AUTH, user: {id, login, email}})
 const setBackendMessageCode= (code) => ({type: SET_BACKEND_MESSAGE_CODE, code})
+const setCaptchaUrl = (captchaUrl) => ({type: SET_CAPTCHA_URL, payload: {captchaUrl}})
 
 export const auth = () => {
     return async (dispatch) => {
@@ -48,13 +56,24 @@ export const auth = () => {
     }
 }
 
+export const getCaptcha = () => {
+    return async (dispatch) => {
+        const response = await securityAPI.getCaptchaUrl()
+        dispatch(setCaptchaUrl(response.url))
+    }
+}
+
 export const signIn = (values) => {
     return async (dispatch) => {
        const response = await authAPI.signIn(values)
+            console.log(response);
             if (!response.resultCode) {
                 dispatch(auth())
                 dispatch(setBackendMessageCode(0))
             }else {
+                if (response.resultCode === 10) {
+                    dispatch(getCaptcha())
+                }
                 dispatch(setBackendMessageCode(response.resultCode))
             }
     }

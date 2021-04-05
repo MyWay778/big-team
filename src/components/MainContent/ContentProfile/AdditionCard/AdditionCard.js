@@ -19,7 +19,7 @@ const AdditionCard = props => {
            props.isLoading? <Preloader /> : [
                <HeaderFour key={0} text={"Контакты"}/>,
                <div key={1} className={classes.contentBlock}>
-                    {items}
+                    {items.length === 0 ? <span>Нет контактов</span> : items}
                 </div>
            ]
         }

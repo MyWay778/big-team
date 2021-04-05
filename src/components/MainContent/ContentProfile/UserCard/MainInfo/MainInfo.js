@@ -15,6 +15,7 @@ const MainInfo = props => {
     <div>
       <Ava img={props.photo || userCardAvaImg} myPage={props.myPage} changePhotoHandler={props.changePhoto}/>
       <TextBlock {...textBlockProps}/>
+      <button onClick={props.switchEditMode}>Edit</button>
     </div>
   )
 }

@@ -12,6 +12,7 @@ const LoginCard = props => {
             <SignInForm
                 signInHandler={props.signInHandler}
                 backendMessageCode={props.backendMessageCode}
+                captchaUrl={props.captchaUrl}
             />
         </section>
     )

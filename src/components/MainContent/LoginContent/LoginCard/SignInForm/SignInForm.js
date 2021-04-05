@@ -26,7 +26,7 @@ const validation = (values) => {
 const SignInForm = props => {
     return (
         <div>
-            <Formik initialValues={{email: '', password: '', rememberMe: false}}
+            <Formik initialValues={{email: '', password: '', rememberMe: false, captcha: ''}}
                     onSubmit={async (values, {setSubmitting, setStatus, setErrors}) => {
                         props.signInHandler(values)
                         setSubmitting(false)
@@ -88,6 +88,21 @@ const SignInForm = props => {
                         <div className={classes.error}>{errors.password && touched.password && errors.password}</div>
                         <div className={classes.field}><label><Field type="checkbox"
                                                                      name="rememberMe"/> Запомнить</label></div>
+                        {props.captchaUrl && <div>
+                            <img src={props.captchaUrl} />
+                            <Field
+                                className={classes.field}
+                                type="text"
+                                name="captcha"
+                                placeholder="Введите символы с картинки"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.captcha}
+                                autoComplete="off"
+                            />
+                            <div className={classes.error}>{errors.captcha && touched.captcha}</div>
+                        </div>}
+
                         <input className={classes.submit} type="submit" value="Войти" disabled={isSubmitting}/>
                     </form>
                     }

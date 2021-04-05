@@ -11,26 +11,29 @@ const UserCard = props => {
     if (!props.isLoading) {
         mainInfoProps = {
             name: props.name,
-            aboutMe:props.aboutMe,
+            aboutMe: props.aboutMe,
             photo: props.photo,
             userStatus: props.userStatus,
             sendStatus: props.sendStatus,
             myPage: props.myPage,
-            changePhoto: props.changePhoto
+            changePhoto: props.changePhoto,
+            switchEditMode: props.switchEditMode
         }
         secondaryInfoProps = {
             isLookingForAJob: props.isLookingForAJob,
             additionalInfo: props.additionalInfo
         }
     }
-        let output = props.isLoading ?
-                <Preloader /> :
-                [<MainInfo key={0} {...mainInfoProps} />, <SecondaryInfo key={1} {...secondaryInfoProps}/>]
-  return (
-    <section className={`${classes.userCard} ${classes.card}`}>
-        {output}
-    </section>
-  )
+    return (
+        <section className={`${classes.userCard} ${classes.card}`}>
+            {props.isLoading ? <Preloader/> :
+                <>
+                    <MainInfo {...mainInfoProps} />
+                    <SecondaryInfo {...secondaryInfoProps}/>
+                </>
+            }
+        </section>
+    )
 }
 
 export default UserCard

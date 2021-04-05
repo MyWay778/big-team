@@ -1,0 +1,11 @@
+.editProfileCard {
+    height: 20rem;
+    padding: 45px;
+    border-radius: 15px;
+    background-color: var(--color-background-card);
+}
+.editProfileForm > label {
+    display: block;
+}
+.editProfileForm > label > input  {
+}

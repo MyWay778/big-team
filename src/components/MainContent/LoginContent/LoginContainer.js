@@ -3,7 +3,7 @@ import classes from "./LoginContainer.module.css"
 import LoginCard from "./LoginCard/LoginCard";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom"
-import {resetBackendMessageCode, signIn} from "../../../redux/authReducer";
+import {getCaptcha, resetBackendMessageCode, signIn} from "../../../redux/authReducer";
 
 class LoginContent extends React.Component {
     componentWillUnmount() {
@@ -18,6 +18,7 @@ class LoginContent extends React.Component {
             <div className={classes.loginContent}>
                 <LoginCard signInHandler={this.props.signIn}
                            backendMessageCode={this.props.backendMessageCode}
+                           captchaUrl={this.props.captchaUrl}
                 />
             </div>
         )
@@ -28,6 +29,7 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.authReducer.isAuth,
         backendMessageCode: state.authReducer.backendMessageCode,
+        captchaUrl: state.authReducer.captchaUrl
     }
 }
 
