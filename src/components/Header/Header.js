@@ -10,7 +10,9 @@ import UserPanelContainer from "./UserPanelContainer/UserPanelContainer";
 const Header = () => {
   return (
     <header className={classes.pageHeader}>
-      <Logo img={logoImg} />
+      <a href="/">
+          <Logo img={logoImg} />
+      </a>
       <Nav />
       <Search />
       <UserPanelContainer />

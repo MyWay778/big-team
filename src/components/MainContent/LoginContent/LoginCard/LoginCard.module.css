@@ -5,4 +5,5 @@
     padding: 45px;
     background-color: var(--color-background-card);
     border-radius: 15px;
+    opacity: 0.99;
 }

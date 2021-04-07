@@ -1,7 +1,15 @@
+
 .itemImg {
   margin-right: 20px;
   vertical-align: -8px;
 }
 .active {
   color: var(--color-highlight)
+}
+.inactive {
+  opacity: 0.4;
+  cursor: default;
+}
+.inactive:hover {
+  color: #F2F2F2;
 }

@@ -14,7 +14,12 @@ a {
   text-decoration: none;
   color: #F2F2F2;
 }
-
+a:hover {
+  color: #6c733d;
+}
+a:active {
+ color: #9da65d;
+}
 h4 {
   font-family: "Roboto", sans-serif;
   font-size: 28px;
@@ -30,4 +35,10 @@ h4 {
 
 main {
   margin-top: 80px;
+}
+.center-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
 }

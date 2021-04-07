@@ -1,7 +1,16 @@
+@import "../../../styles/global.css";
+
 .headerNav {
   align-self: center;
 }
 
 .headerNav a:first-child {
   margin-right: 46px;
+}
+.active {
+  composes: active_type-one from global;
+}
+.dummy {
+  opacity: 0.4;
+  margin-right: 20px;
 }

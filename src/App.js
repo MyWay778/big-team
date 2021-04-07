@@ -16,7 +16,9 @@ class App extends React.Component {
 
     render() {
         if (!this.props.successfulInitialization) {
-            return <Preloader/>
+            return <div className="center-position">
+                <Preloader/>
+            </div>
         }
         return (
             <div className="page-wrapper">

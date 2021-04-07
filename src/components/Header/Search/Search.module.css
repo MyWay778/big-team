@@ -24,11 +24,11 @@
 }
 
 .search__submit {
-  cursor: pointer;
   width: 35px;
   height: 35px;
   border: none;
   outline: none;
   background: var(--text-color) url('../static/search-icon.png') 9px center / auto no-repeat;
   border-radius: 0 20px 20px 0;
+  cursor: default;
 }

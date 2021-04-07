@@ -1,12 +1,13 @@
 import React from 'react'
 import Link from './Link/Link'
 import classes from './Nav.module.css'
+import {NavLink} from "react-router-dom";
 
 const Nav = () => {
   return (
     <nav className={classes.headerNav}>
-      <Link title="Новости" href="#" />
-      <Link title="О проекте" href="#" />
+      <span className={classes.dummy}>Новости</span>
+      <NavLink to="/about" activeClassName={classes.active}>О проекте</NavLink>
     </nav>
   )
 }
