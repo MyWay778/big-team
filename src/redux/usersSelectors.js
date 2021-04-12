@@ -22,4 +22,7 @@ export const getIsLoading = (state) => {
 export const getFollowingBtnBlock = (state) => {
    return state.usersReducer.followingBtnBlock
 }
+export const getIsAuth = (state) => {
+   return state.authReducer.isAuth
+}
 

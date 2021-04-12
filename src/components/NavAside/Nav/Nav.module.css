@@ -2,7 +2,9 @@
   list-style: none;
   font-size: 20px;
 }
-
+.nav li > a {
+  transition: color 0.2s;
+}
 .nav li:nth-of-type(n + 2) {
   margin-top: 50px;
 }

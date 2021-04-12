@@ -3,7 +3,9 @@
 .headerNav {
   align-self: center;
 }
-
+.headerNav a {
+  transition: color 0.2s;
+}
 .headerNav a:first-child {
   margin-right: 46px;
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import classes from './UsersCard.module.css'
 import UsersList from "./UsersList/UsersList";
 import HeaderFour from "../../../ContentProfile/UserCard/MainInfo/TextBlock/HeaderFour/HeaderFour";
-import PageSelector from "./PageSelector/PageSelector";
 import Preloader from "./Preloader/Preloader";
 import Paginator from "./Paginator/Paginator";
 
@@ -19,8 +18,11 @@ const UsersCard = props => {
             <UsersList users={props.users}
                        handlers={usersListHandlers}
                        followingBtnBlock={props.followingBtnBlock}
+                       isAuth={props.isAuth}
             />
-            {props.isLoading ? <Preloader/> : undefined}
+            {props.isLoading ?
+                <Preloader/> :
+                undefined}
             <Paginator
                 pageCount={props.pageCount}
                 currentPage={props.currentPage}

@@ -13,6 +13,10 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+.submit:hover {
+  background-color: #9da65d;
 }
 .textArea {
   outline: none;
@@ -25,6 +29,11 @@
   border: 1px solid var(--color-backForMessages);
   border-radius: 15px;
   background-color: var(--color-backForMessages);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.textArea:focus {
+  background-color: #5c6a6e;
 }
 
 .textArea::placeholder {

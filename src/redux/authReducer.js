@@ -66,7 +66,6 @@ export const getCaptcha = () => {
 export const signIn = (values) => {
     return async (dispatch) => {
        const response = await authAPI.signIn(values)
-            console.log(response);
             if (!response.resultCode) {
                 dispatch(auth())
                 dispatch(setBackendMessageCode(0))

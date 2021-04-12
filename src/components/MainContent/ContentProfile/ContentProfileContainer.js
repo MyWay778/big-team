@@ -62,7 +62,11 @@ class ContentProfile extends React.Component {
             <div className={classes.contentProfile}>
                 {
                     this.props.editProfileMode ?
-                        <EditProfileCard userData={this.props.user} handleSaveChanges={this.props.saveChanges}/> :
+                        <EditProfileCard
+                            userData={this.props.user}
+                            handleSaveChanges={this.props.saveChanges}
+                            switchEditMode={this.props.switchEditProfileMode}
+                        /> :
                         <>
                             <UserCard
                             isLoading={this.props.isLoading}

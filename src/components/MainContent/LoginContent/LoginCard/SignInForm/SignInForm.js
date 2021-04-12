@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 
 import classes from "./SignInForm.module.css"
-import {Field, Formik} from "formik";
+import {Field, Formik, useFormikContext} from "formik";
 
 const validation = (values) => {
     const errors = {}
@@ -23,15 +23,32 @@ const validation = (values) => {
     return errors
 }
 
+
+
 const SignInForm = props => {
+    const [initialValues, setInitialValues] = useState({
+        email: '',
+        password: '',
+        rememberMe: false,
+        captcha: ''
+    })
+    const autoFill = (evt) => {
+        setInitialValues({
+            email: 'sakla4onakne@yandex.ru',
+            password: 'ivanov_ivan',
+            rememberMe: false,
+            captcha: ''
+        })
+    }
     return (
-        <div>
-            <Formik initialValues={{email: '', password: '', rememberMe: false, captcha: ''}}
+        <div className={classes.container}>
+            <Formik initialValues={initialValues}
                     onSubmit={async (values, {setSubmitting, setStatus, setErrors}) => {
                         props.signInHandler(values)
                         setSubmitting(false)
                     }}
                     validate={validation}
+                    enableReinitialize={true}
             >
                 {({
                       values, errors,
@@ -86,9 +103,10 @@ const SignInForm = props => {
                             value={values.password}
                         />
                         <div className={classes.error}>{errors.password && touched.password && errors.password}</div>
-                        <div className={classes.field}><label><Field type="checkbox"
-                                                                     name="rememberMe"/> Запомнить</label></div>
-                        {props.captchaUrl && <div>
+                        <div className={classes.field}>
+                            <label className={classes.checkbox}><Field className={classes.checkbox} type="checkbox" name="rememberMe"/> Запомнить</label>
+                        </div>
+                        {props.captchaUrl && <>
                             <img src={props.captchaUrl} />
                             <Field
                                 className={classes.field}
@@ -101,13 +119,16 @@ const SignInForm = props => {
                                 autoComplete="off"
                             />
                             <div className={classes.error}>{errors.captcha && touched.captcha}</div>
-                        </div>}
-
-                        <input className={classes.submit} type="submit" value="Войти" disabled={isSubmitting}/>
+                        </>}
+                        <div className={classes.buttons}>
+                            <button type="button" onClick={autoFill} className={classes.autoFill}>Заполнить</button>
+                            <input className={classes.submit} type="submit" value="Войти" disabled={isSubmitting}/>
+                        </div>
                     </form>
                     }
                 }
             </Formik>
+
         </div>
     )
 }

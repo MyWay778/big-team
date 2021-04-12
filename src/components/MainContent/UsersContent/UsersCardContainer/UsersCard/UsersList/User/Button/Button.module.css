@@ -14,4 +14,5 @@
 }
 .button:disabled {
   background-color: var(--color-backForMessages);
+  cursor: default;
 }

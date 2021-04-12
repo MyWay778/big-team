@@ -8,7 +8,7 @@ const About  = () => {
             <div className={classes.wrapper}>
                 <HeaderFour text={'О проекте'}/>
                 <p className={classes.paragraph}>
-                    Привет! Это учебный проект выполненый по курсу "React JS - путь самурая 1.0".
+                    Привет! Это мой учебный проект выполненый по курсу "React JS - путь самурая 1.0".
                 </p>
                 <h5 className={classes.techList}>Стек технологий</h5>
                 <ul className={classes.list}>

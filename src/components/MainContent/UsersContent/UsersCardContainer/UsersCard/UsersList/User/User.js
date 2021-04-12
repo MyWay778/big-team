@@ -26,12 +26,12 @@ const User = (props) => {
                     <Button text="Unfollow"
                             handleOnClick={() => props.handleUnfollow(props.id)}
                             followingBtnBlock={props.followingBtnBlock}
-                            disabled={props.followingBtnBlock.some(blockId => blockId === props.id)}
+                            disabled={props.followingBtnBlock.some(blockId => blockId === props.id) || !props.isAuth}
                     /> :
                     <Button text="Follow"
                             handleOnClick={() => props.handleFollow(props.id)}
                             followingBtnBlock={props.followingBtnBlock}
-                            disabled={props.followingBtnBlock.some(blockId => blockId === props.id)}
+                            disabled={props.followingBtnBlock.some(blockId => blockId === props.id) || !props.isAuth}
                     />
                 }
             </div>

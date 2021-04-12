@@ -32,3 +32,15 @@
   border-radius: 0 20px 20px 0;
   cursor: default;
 }
+
+@media (max-width: 1031px) {
+  .search {
+    width: auto;
+  }
+  .search__input {
+    display: none;
+  }
+  .search__submit {
+    border-radius: 50%;
+  }
+}

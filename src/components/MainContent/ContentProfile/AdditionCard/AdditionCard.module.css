@@ -1,4 +1,5 @@
 .additionCard {
+  width: 400px;
   grid-area: adc;
   padding: 45px 45px 35px;
 }
@@ -15,4 +16,11 @@
 }
 .contentBlock > div:nth-child(n+2) {
   margin-top: 20px;
+}
+@media (max-width: 1350px) {
+  .additionCard {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 600px;
+  }
 }

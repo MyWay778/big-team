@@ -27,6 +27,7 @@ const PostForm = props => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.post}
+                        autoComplete="off"
                     />
                     <input
                         className={classes.submit}

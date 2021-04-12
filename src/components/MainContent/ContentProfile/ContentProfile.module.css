@@ -2,8 +2,13 @@
   display: grid;
   grid-template-areas: 'ucard adc' 'pcard pcard';
   grid-template-rows: auto auto;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
   grid-gap: 20px;
-  padding-top: 100px;
+  padding-top: 20px;
   margin: 0 40px;
+}
+@media (max-width: 1350px) {
+  .contentProfile {
+    display: block;
+  }
 }

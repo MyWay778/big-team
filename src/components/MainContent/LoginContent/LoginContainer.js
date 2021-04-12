@@ -3,7 +3,7 @@ import classes from "./LoginContainer.module.css"
 import LoginCard from "./LoginCard/LoginCard";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom"
-import {getCaptcha, resetBackendMessageCode, signIn} from "../../../redux/authReducer";
+import { resetBackendMessageCode, signIn} from "../../../redux/authReducer";
 
 class LoginContent extends React.Component {
     componentWillUnmount() {

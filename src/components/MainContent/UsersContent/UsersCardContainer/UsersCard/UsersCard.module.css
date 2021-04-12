@@ -6,8 +6,8 @@
 }
 .usersCard  div[class*="preloader"]  {
   position: absolute;
-  left: 230px;
-  bottom: 45px;
+  left: 180px;
+  bottom: 80px;
 }
 [class*="paginator"] {
   max-width: 75%;

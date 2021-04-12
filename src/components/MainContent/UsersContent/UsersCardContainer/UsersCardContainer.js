@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import { follow, requestUsers, unfollow } from "../../../../redux/usersReducer";
 import UsersCard from "./UsersCard/UsersCard";
 import {
-    getFollowingBtnBlock,
+    getFollowingBtnBlock, getIsAuth,
     getIsLoading,
     getItemCount,
     getPage,
@@ -35,6 +35,7 @@ class UsersCardContainer extends React.Component {
             currentPage={this.props.currentPage}
             isLoading={this.props.isLoading}
             followingBtnBlock={this.props.followingBtnBlock}
+            isAuth={this.props.isAuth}
         />
     }
 }
@@ -46,7 +47,8 @@ const mapStateToProps = (state) => {
         pageCount: getPageCount(state),
         currentPage: getPage(state),
         isLoading: getIsLoading(state),
-        followingBtnBlock: getFollowingBtnBlock(state)
+        followingBtnBlock: getFollowingBtnBlock(state),
+        isAuth: getIsAuth(state)
     }
 }
 

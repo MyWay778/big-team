@@ -13,6 +13,7 @@ const UsersList = (props) => {
                                  {...user}
                                  {...props.handlers}
                                  followingBtnBlock={props.followingBtnBlock}
+                                 isAuth={props.isAuth}
                     />
                 })
             }

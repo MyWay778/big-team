@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from './Link/Link'
 import classes from './Nav.module.css'
 import {NavLink} from "react-router-dom";
 
