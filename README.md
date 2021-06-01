@@ -2,4 +2,4 @@
 social-network  
 pet-project 
 
-deploy: https://myway778.github.io/about
+deploy: https://myway778.github.io/big-team/
