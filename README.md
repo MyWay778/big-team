@@ -2,4 +2,4 @@
 social-network  
 pet-project 
 
-_being made..._
+deploy: https://myway778.github.io/about
